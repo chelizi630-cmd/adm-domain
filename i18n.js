@@ -547,13 +547,10 @@ function detectInitialLang() {
         const urlLang = url.get('lang');
         if (urlLang && I18N[urlLang]) return urlLang;
     } catch (e) {}
-    // 2. localStorage
+    // 2. localStorage（用户主动选过的）
     const saved = localStorage.getItem('adm_lang');
     if (saved && I18N[saved]) return saved;
-    // 3. 浏览器语言
-    const browser = (navigator.language || 'zh').slice(0, 2).toLowerCase();
-    if (I18N[browser]) return browser;
-    // 4. 兜底中文
+    // 3. 颛底中文（不根据浏览器语言自动切换，默认就是中文）
     return 'zh';
 }
 

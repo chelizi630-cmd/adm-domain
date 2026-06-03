@@ -314,6 +314,12 @@ img, svg { display: block; max-width: 100%; }
 }
 .lang-option.active .lang-sub { background: var(--primary); color: #fff; }
 
+.lang-divider {
+    height: 1px;
+    background: var(--line);
+    margin: 4px 8px;
+}
+
 .hamburger {
     display: none;
     background: none;

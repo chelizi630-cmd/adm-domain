@@ -242,13 +242,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- i18n 初始化（最先！）---
     const initialLang = detectInitialLang();
     applyLang(initialLang);
-    // 更新语言选择器显示
+    // 更新语言选择器显示（默认中文按钮）
     const langFlag = document.getElementById('langFlag');
     const langCode = document.getElementById('langCode');
-    if (langFlag && langCode) {
-        const map = { zh: ['🇨🇳', 'ZH'], en: ['🇬🇧', 'EN'], fr: ['🇫🇷', 'FR'] };
-        [langFlag.textContent, langCode.textContent] = map[initialLang] || map.zh;
+    const langLabelMap = {
+        zh: ['🇨🇳', '中文'],
+        en: ['🇬🇧', 'English'],
+        fr: ['🇫🇷', 'Français']
+    };
+    function refreshLangButton(lang) {
+        if (langFlag && langCode) {
+            const m = langLabelMap[lang] || langLabelMap.zh;
+            langFlag.textContent = m[0];
+            langCode.textContent = m[1];
+        }
     }
+    refreshLangButton(initialLang);
     // 绑定语言切换
     const langBtn = document.getElementById('langBtn');
     const langMenu = document.getElementById('langMenu');
@@ -267,15 +276,14 @@ document.addEventListener('DOMContentLoaded', () => {
         opt.addEventListener('click', () => {
             const lang = opt.dataset.lang;
             applyLang(lang);
-            const map = { zh: ['🇨🇳', 'ZH'], en: ['🇬🇧', 'EN'], fr: ['🇫🇷', 'FR'] };
-            [langFlag.textContent, langCode.textContent] = map[lang];
+            refreshLangButton(lang);
             langMenu.classList.remove('open');
             langBtn.setAttribute('aria-expanded', 'false');
             // 重新渲染动态内容
             renderBoard(document.getElementById('msgFilter').value);
             // 重新跑搜索索引
-            if (searchInput.value.trim()) {
-                renderSearchResults(searchSite(searchInput.value));
+            if (document.getElementById('searchInput').value.trim()) {
+                renderSearchResults(searchSite(document.getElementById('searchInput').value));
             }
         });
     });

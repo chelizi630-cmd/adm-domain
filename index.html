@@ -39,19 +39,20 @@
                 <a href="#dashboards" data-i18n="nav.dashboards">看板</a>
                 <a href="#board" data-i18n="nav.board">留言</a>
 
-                <!-- 语言选择器 -->
+                <!-- 语言选择器（默认中文，只列出 EN/FR 供切换） -->
                 <div class="lang-switcher" id="langSwitcher">
-                    <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="Language / 语言 / Langue">
+                    <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="语言 / Language">
                         <span class="lang-flag" id="langFlag">🇨🇳</span>
-                        <span class="lang-code" id="langCode">ZH</span>
+                        <span class="lang-code" id="langCode">中文</span>
                         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg>
                     </button>
                     <div class="lang-menu" id="langMenu" role="menu">
                         <button class="lang-option" data-lang="zh" role="menuitem">
                             <span class="lang-flag">🇨🇳</span>
-                            <span class="lang-name">中文</span>
-                            <span class="lang-sub">简体</span>
+                            <span class="lang-name">中文（默认）</span>
+                            <span class="lang-sub">ZH</span>
                         </button>
+                        <div class="lang-divider" role="separator"></div>
                         <button class="lang-option" data-lang="en" role="menuitem">
                             <span class="lang-flag">🇬🇧</span>
                             <span class="lang-name">English</span>
