@@ -9,29 +9,40 @@
    6. 移动端汉堡菜单
    ============================================================ */
 
-// ====== 站内搜索索引（15 个模块） ======
+// ====== 站内搜索索引（15 个模块 + 4 persona） ======
+// 多语言：在 i18n.js 里定义字典 + key 引用
 const SEARCH_INDEX = [
-    { id: 'A', title: '组织架构图 Organization Chart', desc: 'NEA / 领域项目 / 工厂团队的组织层级与汇报关系。', keywords: '组织架构 团队 层级 汇报 org chart hierarchy team', personas: ['B', 'D'] },
-    { id: 'B', title: 'NEA 项目 NEA Project', desc: '下一代先进制造项目立项与进展。', keywords: 'NEA project 立项 项目 next era advanced manufacturing', personas: ['A', 'B', 'C'] },
-    { id: 'C', title: '领域项目 Domain Project', desc: '按行业 / 区域 / 主题划分的领域级项目协同与里程碑。', keywords: '领域 行业 区域 domain project 行业 主题 milestone', personas: ['A', 'B', 'C'] },
-    { id: 'D', title: '绩效计分卡 Performance Scorecard', desc: '关键 KPI / OEE / 良品率 等指标的实时计分卡与对标分析。', keywords: '绩效 KPI OEE 良品率 指标 scorecard performance metric', personas: ['B', 'C', 'D'] },
-    { id: 'E', title: '技能清单 Skills List', desc: '按岗位 / 等级梳理的 ADM 技能矩阵与个人能力图谱。', keywords: '技能 清单 岗位 等级 能力 skills matrix 培训需求', personas: ['C'] },
-    { id: 'F', title: '在线培训 Training Online', desc: '视频课程 / 认证路径 / 在线考试 / 学习记录追踪。', keywords: '培训 在线 课程 认证 考试 视频 培训 training course certification exam e-learning', personas: ['C'] },
-    { id: 'G', title: '参观需求清单 Visit Needs List', desc: '工厂对内 / 对外参观申请的提交、审批与档期管理。', keywords: '参观 访客 需求 申请 visit factory tour', personas: ['C'] },
-    { id: 'H', title: '灯塔工厂参观 Lighthouse Factory BP/GP Sharing', desc: '世界级灯塔工厂的参观安排与最佳实践分享。', keywords: '灯塔 工厂 参观 最佳实践 lighthouse factory BP GP', personas: ['C'] },
-    { id: 'I', title: '最佳实践分享 GP/BP Sharing', desc: '跨工厂 / 跨项目 / 跨领域的 Good Practice / Best Practice 沉淀。', keywords: '最佳实践 分享 GP BP good practice best 案例', personas: ['A', 'B', 'C', 'D'] },
-    { id: 'J', title: '工具箱 Tools (AI / Useful Methods)', desc: 'AI 工具 / 实用方法论 / 模板下载 —— 让生产/技术人员事半功倍。', keywords: '工具 AI 方法 模板 工具箱 tools template method AI', personas: ['C'] },
-    { id: 'K', title: '审核申请/日历 Audit Application & Calendar', desc: '内审 / 外审 / 认证申请的提交流程 + 全年审核日历。', keywords: '审核 申请 日历 审计 认证 audit certification calendar 审核 申请', personas: ['C', 'D'] },
-    { id: 'L', title: '追溯性 Traceability', desc: '物料 / 工艺 / 设备的全链路追溯与一键反查。', keywords: '追溯 物料 工艺 设备 反查 traceability material', personas: ['D'] },
-    { id: 'M', title: 'API 链接/扫描 API Link (Scan ABC)', desc: '与 MES / ERP / WMS 等系统对接的 API 文档与扫码集成。', keywords: 'API 接口 集成 扫码 MES ERP WMS 集成 integration', personas: ['D'] },
-    { id: 'N', title: '寻源查询 Sourcing Searching', desc: '供应商寻源 / 比价 / 历史合作记录的统一查询入口。', keywords: '寻源 供应商 比价 sourcing supplier', personas: ['D'] },
-    { id: 'O', title: '留言本 Q&A / Feedback', desc: '提问、建议、反馈 —— 留言后由平台运营 24h 内回复。', keywords: '留言 反馈 Q A feedback question 留言 提问', personas: ['A', 'B', 'C', 'D'] },
-    // 画像
-    { id: 'persona-A', title: '访客 / 初学者', desc: '只想大概了解 ADM 平台是做什么的。', keywords: '访客 入门 新手 beginner visitor guest', personas: ['A'] },
-    { id: 'persona-B', title: '领导者', desc: '宏观管理 + 信息获取：进展、表现、汇报。', keywords: '领导 管理者 决策 leader executive management', personas: ['B'] },
-    { id: 'persona-C', title: '生产 / 技术人员', desc: '技能提升 + 工具 + 培训 + 审核。', keywords: '生产 技术 工程师 操作员 production engineer technician', personas: ['C'] },
-    { id: 'persona-D', title: '工厂管理者', desc: '合规 + 架构 + 表现：组织、追溯、审核。', keywords: '工厂 厂长 总监 factory director plant manager', personas: ['D'] }
+    { id: 'A', titleKey: 'mod.A.title', enKey: 'mod.A.en', descKey: 'mod.A.desc', keywords: '组织架构 团队 层级 汇报 org chart hierarchy team organization', personas: ['B', 'D'] },
+    { id: 'B', titleKey: 'mod.B.title', enKey: 'mod.B.en', descKey: 'mod.B.desc', keywords: 'NEA project 立项 项目 next era advanced manufacturing project initiative', personas: ['A', 'B', 'C'] },
+    { id: 'C', titleKey: 'mod.C.title', enKey: 'mod.C.en', descKey: 'mod.C.desc', keywords: '领域 行业 区域 domain project industry theme region milestone', personas: ['A', 'B', 'C'] },
+    { id: 'D', titleKey: 'mod.D.title', enKey: 'mod.D.en', descKey: 'mod.D.desc', keywords: '绩效 KPI OEE 良品率 指标 scorecard performance metric benchmark', personas: ['B', 'C', 'D'] },
+    { id: 'E', titleKey: 'mod.E.title', enKey: 'mod.E.en', descKey: 'mod.E.desc', keywords: '技能 清单 岗位 等级 能力 skills matrix capability training needs', personas: ['C'] },
+    { id: 'F', titleKey: 'mod.F.title', enKey: 'mod.F.en', descKey: 'mod.F.desc', keywords: '培训 在线 课程 认证 考试 视频 training course certification exam e-learning video', personas: ['C'] },
+    { id: 'G', titleKey: 'mod.G.title', enKey: 'mod.G.en', descKey: 'mod.G.desc', keywords: '参观 访客 需求 申请 visit factory tour schedule', personas: ['C'] },
+    { id: 'H', titleKey: 'mod.H.title', enKey: 'mod.H.en', descKey: 'mod.H.desc', keywords: '灯塔 工厂 参观 最佳实践 lighthouse factory BP GP best practice', personas: ['C'] },
+    { id: 'I', titleKey: 'mod.I.title', enKey: 'mod.I.en', descKey: 'mod.I.desc', keywords: '最佳实践 分享 GP BP good practice best 案例 case study', personas: ['A', 'B', 'C', 'D'] },
+    { id: 'J', titleKey: 'mod.J.title', enKey: 'mod.J.en', descKey: 'mod.J.desc', keywords: '工具 AI 方法 模板 工具箱 tools template method AI methodology download', personas: ['C'] },
+    { id: 'K', titleKey: 'mod.K.title', enKey: 'mod.K.en', descKey: 'mod.K.desc', keywords: '审核 申请 日历 审计 认证 audit certification calendar 审核 申请', personas: ['C', 'D'] },
+    { id: 'L', titleKey: 'mod.L.title', enKey: 'mod.L.en', descKey: 'mod.L.desc', keywords: '追溯 物料 工艺 设备 反查 traceability material process equipment lookup', personas: ['D'] },
+    { id: 'M', titleKey: 'mod.M.title', enKey: 'mod.M.en', descKey: 'mod.M.desc', keywords: 'API 接口 集成 扫码 MES ERP WMS 集成 integration scan', personas: ['D'] },
+    { id: 'N', titleKey: 'mod.N.title', enKey: 'mod.N.en', descKey: 'mod.N.desc', keywords: '寻源 供应商 比价 sourcing supplier price compare search', personas: ['D'] },
+    { id: 'O', titleKey: 'mod.O.title', enKey: 'mod.O.en', descKey: 'mod.O.desc', keywords: '留言 反馈 Q A feedback question suggestion', personas: ['A', 'B', 'C', 'D'] },
+    { id: 'persona-A', titleKey: 'persona.A.tag', enKey: null, descKey: 'persona.A.q', keywords: '访客 入门 新手 beginner visitor guest discover 入门', personas: ['A'] },
+    { id: 'persona-B', titleKey: 'persona.B.tag', enKey: null, descKey: 'persona.B.q', keywords: '领导 管理者 决策 leader executive management 领导', personas: ['B'] },
+    { id: 'persona-C', titleKey: 'persona.C.tag', enKey: null, descKey: 'persona.C.q', keywords: '生产 技术 工程师 操作员 production engineer technician 构建 build', personas: ['C'] },
+    { id: 'persona-D', titleKey: 'persona.D.tag', enKey: null, descKey: 'persona.D.q', keywords: '工厂 厂长 总监 factory director plant manager operate 运营', personas: ['D'] }
 ];
+
+function searchIndexResolved() {
+    const lang = window.ADM_LANG || 'zh';
+    const t = (window.I18N && window.I18N[lang]) || (window.I18N && window.I18N.zh) || {};
+    return SEARCH_INDEX.map(item => {
+        const title = t[item.titleKey] || item.titleKey;
+        const en = item.enKey ? (t[item.enKey] || '') : '';
+        const desc = t[item.descKey] || '';
+        return { ...item, title, desc, en };
+    });
+}
 
 // ====== 简易 fuzzy 匹配 ======
 function fuzzyScore(query, text) {
@@ -50,11 +61,13 @@ function fuzzyScore(query, text) {
 function searchSite(query) {
     if (!query || !query.trim()) return [];
     const q = query.trim();
-    return SEARCH_INDEX
+    const items = searchIndexResolved();
+    return items
         .map(item => {
             const score = Math.max(
                 fuzzyScore(q, item.title),
                 fuzzyScore(q, item.desc),
+                fuzzyScore(q, item.en || ''),
                 fuzzyScore(q, item.keywords)
             );
             return { ...item, _score: score };
@@ -65,14 +78,21 @@ function searchSite(query) {
 }
 
 function personaBadge(p) {
-    const labels = { A: '访客', B: '领导', C: '生产', D: '工厂' };
-    return `<span class="tag-pill p-${p}">${labels[p] || p}</span>`;
+    const lang = window.ADM_LANG || 'zh';
+    const labels = {
+        zh: { A: '访客', B: '领导', C: '生产', D: '工厂' },
+        en: { A: 'Visitor', B: 'Leader', C: 'Production', D: 'Factory' },
+        fr: { A: 'Visiteur', B: 'Leader', C: 'Production', D: 'Usine' }
+    };
+    return `<span class="tag-pill p-${p}">${(labels[lang] || labels.zh)[p] || p}</span>`;
 }
 
 function renderSearchResults(results) {
     const box = document.getElementById('searchResults');
+    const lang = window.ADM_LANG || 'zh';
+    const t = (window.I18N && window.I18N[lang]) || window.I18N.zh;
     if (!results.length) {
-        box.innerHTML = '<div class="search-empty">没有匹配结果。试试 NEA、培训、审核…</div>';
+        box.innerHTML = `<div class="search-empty">${t['search.empty'] || '没有匹配结果'}</div>`;
         box.hidden = false;
         return;
     }
@@ -133,11 +153,13 @@ function escapeHtml(s) {
 
 function timeAgo(ts) {
     const diff = Date.now() - ts;
-    if (diff < 60000) return '刚刚';
-    if (diff < 3600000) return Math.floor(diff / 60000) + ' 分钟前';
-    if (diff < 86400000) return Math.floor(diff / 3600000) + ' 小时前';
-    if (diff < 604800000) return Math.floor(diff / 86400000) + ' 天前';
-    return new Date(ts).toLocaleDateString('zh-CN');
+    const lang = window.ADM_LANG || 'zh';
+    const t = (window.I18N && window.I18N[lang]) || window.I18N.zh;
+    if (diff < 60000) return t['msg.time.just'] || '刚刚';
+    if (diff < 3600000) return Math.floor(diff / 60000) + (t['msg.time.mins'] || ' 分钟前');
+    if (diff < 86400000) return Math.floor(diff / 3600000) + (t['msg.time.hours'] || ' 小时前');
+    if (diff < 604800000) return Math.floor(diff / 86400000) + (t['msg.time.days'] || ' 天前');
+    return new Date(ts).toLocaleDateString(lang === 'zh' ? 'zh-CN' : lang);
 }
 
 function renderBoard(filterPersona = 'all') {
@@ -146,6 +168,14 @@ function renderBoard(filterPersona = 'all') {
     const msgs = loadBoard()
         .filter(m => filterPersona === 'all' || m.persona === filterPersona)
         .sort((a, b) => b.time - a.time);
+
+    const lang = window.ADM_LANG || 'zh';
+    const t = (window.I18N && window.I18N[lang]) || window.I18N.zh;
+    const personaLabels = {
+        zh: { A: '访客', B: '领导', C: '生产', D: '工厂' },
+        en: { A: 'Visitor', B: 'Leader', C: 'Production', D: 'Factory' },
+        fr: { A: 'Visiteur', B: 'Leader', C: 'Production', D: 'Usine' }
+    }[lang] || { A: '访客', B: '领导', C: '生产', D: '工厂' };
 
     document.getElementById('msgCount').textContent = msgs.length;
 
@@ -161,19 +191,19 @@ function renderBoard(filterPersona = 'all') {
             <div class="msg-head">
                 <div class="msg-avatar">${escapeHtml((m.name || '匿')[0])}</div>
                 <span class="msg-name">${escapeHtml(m.name || '匿名')}</span>
-                <span class="msg-persona ${m.persona}">${{A:'访客',B:'领导',C:'生产',D:'工厂'}[m.persona] || m.persona}</span>
+                <span class="msg-persona ${m.persona}">${personaLabels[m.persona] || m.persona}</span>
                 <span class="msg-time">${timeAgo(m.time)}</span>
             </div>
             <div class="msg-body">${escapeHtml(m.message)}</div>
             ${(m.replies || []).map(r => `
                 <div class="msg-reply">
-                    <span class="reply-tag">回复 · ${escapeHtml(r.name)}</span>${escapeHtml(r.text)}<br>
+                    <span class="reply-tag">${(lang === 'en' ? 'Reply · ' : lang === 'fr' ? 'Réponse · ' : '回复 · ')}${escapeHtml(r.name)}</span>${escapeHtml(r.text)}<br>
                     <span style="font-size:11px;color:var(--ink-3);">${timeAgo(r.time)}</span>
                 </div>
             `).join('')}
             <div class="msg-actions">
-                <button class="reply-btn" data-id="${m.id}">↩ 回复</button>
-                <button class="del" data-id="${m.id}">🗑 删除</button>
+                <button class="reply-btn" data-id="${m.id}">${t['msg.reply'] || '↩ 回复'}</button>
+                <button class="del" data-id="${m.id}">${t['msg.delete'] || '🗑 删除'}</button>
             </div>
         </li>
     `).join('');
@@ -182,7 +212,7 @@ function renderBoard(filterPersona = 'all') {
     list.querySelectorAll('.del').forEach(btn => {
         btn.addEventListener('click', () => {
             const id = btn.getAttribute('data-id');
-            if (!confirm('确定删除这条留言？')) return;
+            if (!confirm(t['msg.delete.confirm'] || '确定删除这条留言？')) return;
             const arr = loadBoard().filter(m => m.id !== id);
             saveBoard(arr);
             renderBoard(document.getElementById('msgFilter').value);
@@ -191,9 +221,9 @@ function renderBoard(filterPersona = 'all') {
     list.querySelectorAll('.reply-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const id = btn.getAttribute('data-id');
-            const reply = prompt('回复内容：');
+            const reply = prompt(t['msg.reply.prompt'] || '回复内容：');
             if (!reply || !reply.trim()) return;
-            const name = prompt('回复人称呼：', '运营') || '运营';
+            const name = prompt(t['msg.reply.name'] || '回复人称呼：', t['msg.reply.name.default'] || '运营') || (t['msg.reply.name.default'] || '运营');
             const arr = loadBoard();
             const m = arr.find(x => x.id === id);
             if (m) {
@@ -208,6 +238,47 @@ function renderBoard(filterPersona = 'all') {
 
 // ====== 初始化所有交互 ======
 document.addEventListener('DOMContentLoaded', () => {
+
+    // --- i18n 初始化（最先！）---
+    const initialLang = detectInitialLang();
+    applyLang(initialLang);
+    // 更新语言选择器显示
+    const langFlag = document.getElementById('langFlag');
+    const langCode = document.getElementById('langCode');
+    if (langFlag && langCode) {
+        const map = { zh: ['🇨🇳', 'ZH'], en: ['🇬🇧', 'EN'], fr: ['🇫🇷', 'FR'] };
+        [langFlag.textContent, langCode.textContent] = map[initialLang] || map.zh;
+    }
+    // 绑定语言切换
+    const langBtn = document.getElementById('langBtn');
+    const langMenu = document.getElementById('langMenu');
+    langBtn?.addEventListener('click', e => {
+        e.stopPropagation();
+        const isOpen = langMenu.classList.toggle('open');
+        langBtn.setAttribute('aria-expanded', isOpen);
+    });
+    document.addEventListener('click', e => {
+        if (!document.getElementById('langSwitcher')?.contains(e.target)) {
+            langMenu?.classList.remove('open');
+            langBtn?.setAttribute('aria-expanded', 'false');
+        }
+    });
+    document.querySelectorAll('.lang-option').forEach(opt => {
+        opt.addEventListener('click', () => {
+            const lang = opt.dataset.lang;
+            applyLang(lang);
+            const map = { zh: ['🇨🇳', 'ZH'], en: ['🇬🇧', 'EN'], fr: ['🇫🇷', 'FR'] };
+            [langFlag.textContent, langCode.textContent] = map[lang];
+            langMenu.classList.remove('open');
+            langBtn.setAttribute('aria-expanded', 'false');
+            // 重新渲染动态内容
+            renderBoard(document.getElementById('msgFilter').value);
+            // 重新跑搜索索引
+            if (searchInput.value.trim()) {
+                renderSearchResults(searchSite(searchInput.value));
+            }
+        });
+    });
 
     // --- 搜索 ---
     const searchInput = document.getElementById('searchInput');
