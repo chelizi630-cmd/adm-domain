@@ -1,905 +1,437 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADM Domain - Advanced Manufacturing</title>
+    <title>ADM 先进制造域 · Advanced Manufacturing Domain</title>
+    <meta name="description" content="面向访客/领导/生产/工厂 4 类用户画像的先进制造域平台。包含 NEA 项目、领域项目、绩效计分卡、技能培训、审核申请、灯塔工厂等 15 个核心模块。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #0057B8;
-            --primary-dark: #003D7A;
-            --primary-light: #4D8FD9;
-            --accent: #00D4FF;
-            --bg-dark: #0A1628;
-            --bg-darker: #060D18;
-            --bg-card: #0F1E35;
-            --text-primary: #FFFFFF;
-            --text-secondary: #8BA3C7;
-            --border: rgba(0, 87, 184, 0.3);
-            --glow: rgba(0, 212, 255, 0.15);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Outfit', sans-serif;
-            background: var(--bg-darker);
-            color: var(--text-primary);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* Background Grid Pattern */
-        .bg-grid {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 87, 184, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 87, 184, 0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 72px;
-            background: rgba(6, 13, 24, 0.9);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 48px;
-            z-index: 1000;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Space Mono', monospace;
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        .logo-text {
-            font-weight: 700;
-            font-size: 20px;
-            letter-spacing: 1px;
-        }
-
-        .logo-text span {
-            color: var(--accent);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 8px;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            padding: 8px 20px;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-primary);
-            background: rgba(0, 87, 184, 0.2);
-        }
-
-        .nav-links a.active {
-            color: var(--accent);
-            background: rgba(0, 212, 255, 0.1);
-        }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 120px 48px 80px;
-            z-index: 1;
-        }
-
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(0, 87, 184, 0.15);
-            border: 1px solid var(--border);
-            padding: 6px 16px;
-            border-radius: 100px;
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--accent);
-            margin-bottom: 24px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .hero-badge::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            background: var(--accent);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .hero h1 {
-            font-size: clamp(48px, 8vw, 80px);
-            font-weight: 700;
-            line-height: 1.05;
-            margin-bottom: 24px;
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero h1 span {
-            background: linear-gradient(135deg, var(--primary-light), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: 18px;
-            line-height: 1.7;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin-bottom: 40px;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 16px;
-        }
-
-        .btn {
-            padding: 14px 32px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            font-family: inherit;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: var(--text-primary);
-            box-shadow: 0 4px 24px rgba(0, 87, 184, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 32px rgba(0, 87, 184, 0.5);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-primary);
-            border: 1px solid var(--border);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(0, 87, 184, 0.2);
-            border-color: var(--primary);
-        }
-
-        /* Stats Bar */
-        .stats-bar {
-            position: absolute;
-            right: 48px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-        }
-
-        .stat-item {
-            text-align: right;
-        }
-
-        .stat-value {
-            font-family: 'Space Mono', monospace;
-            font-size: 48px;
-            font-weight: 700;
-            color: var(--accent);
-            line-height: 1;
-        }
-
-        .stat-label {
-            font-size: 12px;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-top: 4px;
-        }
-
-        /* Section Styles */
-        section {
-            position: relative;
-            padding: 100px 48px;
-            z-index: 1;
-        }
-
-        .section-header {
-            margin-bottom: 60px;
-        }
-
-        .section-tag {
-            font-family: 'Space Mono', monospace;
-            font-size: 12px;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 16px;
-        }
-
-        .section-title {
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-
-        .section-desc {
-            font-size: 16px;
-            color: var(--text-secondary);
-            max-width: 600px;
-            line-height: 1.7;
-        }
-
-        /* Quick Access Grid */
-        .quick-access {
-            background: var(--bg-dark);
-        }
-
-        .qa-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .qa-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 32px;
-            transition: all 0.4s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .qa-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .qa-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary);
-            box-shadow: 0 20px 60px rgba(0, 87, 184, 0.2);
-        }
-
-        .qa-card:hover::before {
-            opacity: 1;
-        }
-
-        .qa-icon {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, rgba(0, 87, 184, 0.2), rgba(0, 212, 255, 0.1));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            font-size: 24px;
-        }
-
-        .qa-card h3 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .qa-card p {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        .qa-card .card-arrow {
-            position: absolute;
-            right: 32px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 40px;
-            height: 40px;
-            background: rgba(0, 87, 184, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-
-        .qa-card:hover .card-arrow {
-            opacity: 1;
-            right: 24px;
-        }
-
-        /* Navigation Section */
-        .nav-section {
-            background: var(--bg-darker);
-        }
-
-        .nav-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .nav-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 28px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .nav-card:hover {
-            background: rgba(0, 87, 184, 0.15);
-            border-color: var(--primary-light);
-        }
-
-        .nav-card h4 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .nav-card h4::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: var(--accent);
-            border-radius: 2px;
-        }
-
-        .nav-card p {
-            font-size: 13px;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-        /* Performance Section */
-        .performance {
-            background: var(--bg-dark);
-        }
-
-        .perf-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .perf-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 32px;
-            text-align: center;
-            position: relative;
-        }
-
-        .perf-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            border-radius: 3px;
-        }
-
-        .perf-metric {
-            font-family: 'Space Mono', monospace;
-            font-size: 56px;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--accent), var(--primary-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
-        }
-
-        .perf-label {
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-        }
-
-        .perf-desc {
-            font-size: 13px;
-            color: var(--text-secondary);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--bg-darker);
-            border-top: 1px solid var(--border);
-            padding: 60px 48px 40px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 48px;
-        }
-
-        .footer-brand h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-
-        .footer-brand p {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        .footer-links h4 {
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            margin-bottom: 20px;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--text-primary);
-        }
-
-        .footer-bottom {
-            max-width: 1400px;
-            margin: 40px auto 0;
-            padding-top: 24px;
-            border-top: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-bottom p {
-            font-size: 12px;
-            color: var(--text-secondary);
-        }
-
-        .footer-bottom span {
-            color: var(--accent);
-        }
-
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .nav-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .perf-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .stats-bar {
-                display: none;
-            }
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                padding: 0 24px;
-            }
-            .nav-links {
-                display: none;
-            }
-            section {
-                padding: 60px 24px;
-            }
-            .hero {
-                padding: 100px 24px 60px;
-            }
-            .hero h1 {
-                font-size: 42px;
-            }
-            .nav-grid, .perf-grid, .qa-grid {
-                grid-template-columns: 1fr;
-            }
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Glow Effects */
-        .glow-line {
-            position: absolute;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            opacity: 0.3;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="bg-grid"></div>
+    <!-- Skip link for a11y -->
+    <a class="skip-link" href="#main">跳到主要内容</a>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="logo">
-            <div class="logo-icon">ADM</div>
-            <div class="logo-text">Advanced <span>Manufacturing</span></div>
-        </div>
-        <div class="nav-links">
-            <a href="#home" class="active">Home</a>
-            <a href="#navigation">Navigation</a>
-            <a href="#quick-access">Quick Access</a>
-            <a href="#performance">Performance</a>
-            <a href="#tools">Tools</a>
-        </div>
-    </nav>
+    <!-- ===== Header / Top Bar ===== -->
+    <header class="site-header" id="top">
+        <div class="header-inner">
+            <a href="#top" class="brand">
+                <div class="brand-mark">ADM</div>
+                <div class="brand-text">
+                    <div class="brand-zh">先进制造域</div>
+                    <div class="brand-en">Advanced Manufacturing Domain</div>
+                </div>
+            </a>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="hero-badge">Industry 5.0 Ready</div>
-            <h1>Advanced<br><span>Manufacturing</span> Domain</h1>
-            <p>Empowering intelligent manufacturing through seamless collaboration, data-driven insights, and cutting-edge technology. Building the future of production, today.</p>
-            <div class="hero-cta">
-                <a href="#navigation" class="btn btn-primary">Explore Domain</a>
-                <a href="#performance" class="btn btn-secondary">View Performance</a>
+            <!-- 顶部搜索 -->
+            <div class="search-box" role="search">
+                <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+                <input id="searchInput" type="search" placeholder="搜索模块、文档、案例…（试试 NEA、培训、审核）" autocomplete="off" aria-label="站内搜索">
+                <kbd>⌘ K</kbd>
+                <div id="searchResults" class="search-results" hidden></div>
             </div>
+
+            <nav class="primary-nav" aria-label="主导航">
+                <a href="#persona">用户入口</a>
+                <a href="#modules">模块</a>
+                <a href="#dashboards">看板</a>
+                <a href="#board">留言</a>
+                <a href="https://github.com/chelizi630-cmd/adm-domain" class="nav-github" aria-label="GitHub 仓库" target="_blank" rel="noopener">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57v-2.02C5.7 21.7 5 19.66 5 19.66c-.55-1.4-1.34-1.77-1.34-1.77-1.1-.75.08-.74.08-.74 1.2.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .31.22.7.83.58A12 12 0 0 0 12 .3"/></svg>
+                </a>
+            </nav>
+
+            <button class="hamburger" id="hamburger" aria-label="菜单" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
         </div>
-        <div class="stats-bar">
-            <div class="stat-item">
-                <div class="stat-value">142</div>
-                <div class="stat-label">Active Projects</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value">98%</div>
-                <div class="stat-label">Efficiency Rate</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value">24/7</div>
-                <div class="stat-label">Operations</div>
+    </header>
+
+    <main id="main">
+
+    <!-- ===== Hero / 平台一句话 ===== -->
+    <section class="hero">
+        <div class="hero-grid-bg" aria-hidden="true"></div>
+        <div class="container hero-inner">
+            <div class="hero-tag">INDUSTRY 5.0 · NEA DOMAIN</div>
+            <h1>面向 <span class="hl">先进制造</span> 的一站式协同平台</h1>
+            <p class="hero-sub">从项目立项到灯塔工厂，从技能培训到审计追溯——4 类用户，15 个核心模块，按你的角色直达所需。</p>
+
+            <!-- 4 入口：persona chooser -->
+            <div class="persona-grid" id="persona">
+                <a href="#dashboards" class="persona-card persona-A" data-persona="A">
+                    <div class="persona-emoji">👀</div>
+                    <div class="persona-meta">
+                        <div class="persona-tag">访客 / 初学者</div>
+                        <div class="persona-q">"这平台是干嘛的？"</div>
+                    </div>
+                    <ul class="persona-modules">
+                        <li>B NEA 项目</li><li>C 领域项目</li><li>I 最佳实践</li>
+                    </ul>
+                    <div class="persona-cta">进入访客视图 →</div>
+                </a>
+                <a href="#dashboards" class="persona-card persona-B" data-persona="B">
+                    <div class="persona-emoji">📊</div>
+                    <div class="persona-meta">
+                        <div class="persona-tag">领导者</div>
+                        <div class="persona-q">"目前进展和表现如何？"</div>
+                    </div>
+                    <ul class="persona-modules">
+                        <li>B NEA</li><li>C 领域</li><li>D 绩效</li><li>I 分享</li><li>A 架构</li>
+                    </ul>
+                    <div class="persona-cta">进入领导看板 →</div>
+                </a>
+                <a href="#dashboards" class="persona-card persona-C persona-featured" data-persona="C">
+                    <div class="persona-badge">最广</div>
+                    <div class="persona-emoji">🛠️</div>
+                    <div class="persona-meta">
+                        <div class="persona-tag">生产 / 技术</div>
+                        <div class="persona-q">"我怎么做得更好？"</div>
+                    </div>
+                    <ul class="persona-modules">
+                        <li>E 技能</li><li>F 培训</li><li>J 工具</li><li>K 审核</li><li>H 灯塔</li><li>+ 4</li>
+                    </ul>
+                    <div class="persona-cta">进入生产/技术看板 →</div>
+                </a>
+                <a href="#dashboards" class="persona-card persona-D" data-persona="D">
+                    <div class="persona-emoji">🏭</div>
+                    <div class="persona-meta">
+                        <div class="persona-tag">工厂管理者</div>
+                        <div class="persona-q">"我们工厂达标了吗？"</div>
+                    </div>
+                    <ul class="persona-modules">
+                        <li>K 审核</li><li>A 架构</li><li>I 分享</li><li>D 绩效</li>
+                    </ul>
+                    <div class="persona-cta">进入工厂看板 →</div>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Navigation Section -->
-    <section class="nav-section" id="navigation">
-        <div class="section-header">
-            <div class="section-tag">Domain Navigation</div>
-            <h2 class="section-title">Key Areas</h2>
-            <p class="section-desc">Access critical organizational resources and strategic initiatives across the manufacturing ecosystem.</p>
-        </div>
-        <div class="nav-grid">
-            <div class="nav-card">
-                <h4>Org Charts</h4>
-                <p>Explore team structures, reporting lines, and departmental hierarchies across the organization.</p>
+    <!-- ===== 15 模块网格 ===== -->
+    <section class="modules-section" id="modules">
+        <div class="container">
+            <div class="section-head">
+                <div class="section-eyebrow">15 个核心模块</div>
+                <h2>按问题驱动的索引，而不是技术分类</h2>
+                <p>每个模块都标记了适用画像，悬停查看详情，点击进入对应模块。</p>
             </div>
-            <div class="nav-card">
-                <h4>Project Wins</h4>
-                <p>Celebrate achievements, track successful implementations, and learn from completed initiatives.</p>
+
+            <div class="module-filter" id="moduleFilter" role="tablist" aria-label="按画像筛选模块">
+                <button class="filter-btn active" data-filter="all">全部 (15)</button>
+                <button class="filter-btn" data-filter="A">👀 访客</button>
+                <button class="filter-btn" data-filter="B">📊 领导</button>
+                <button class="filter-btn" data-filter="C">🛠️ 生产</button>
+                <button class="filter-btn" data-filter="D">🏭 工厂</button>
             </div>
-            <div class="nav-card">
-                <h4>Performance Reporting</h4>
-                <p>SCAN, AMD, and NEA metrics dashboards for real-time visibility into operational excellence.</p>
-            </div>
-            <div class="nav-card">
-                <h4>Strategic Initiatives</h4>
-                <p>Track cross-functional programs, milestones, and alignment with corporate objectives.</p>
+
+            <div class="module-grid" id="moduleGrid">
+                <!-- A Organization chart -->
+                <article class="module-card m-org" data-modules="A" data-personas="B D">
+                    <div class="module-id">A</div>
+                    <div class="module-body">
+                        <h3>组织架构图 <span class="module-en">Organization Chart</span></h3>
+                        <p>NEA / 领域项目 / 工厂团队的组织层级与汇报关系。</p>
+                        <div class="module-tags"><span class="tag-pill p-B">领导</span><span class="tag-pill p-D">工厂</span></div>
+                    </div>
+                </article>
+                <!-- B NEA project -->
+                <article class="module-card m-nea" data-modules="B" data-personas="A B C">
+                    <div class="module-id">B</div>
+                    <div class="module-body">
+                        <h3>NEA 项目 <span class="module-en">NEA Project</span></h3>
+                        <p>Next Era of Advanced Manufacturing —— 下一代先进制造项目立项与进展。</p>
+                        <div class="module-tags"><span class="tag-pill p-A">访客</span><span class="tag-pill p-B">领导</span><span class="tag-pill p-C">生产</span></div>
+                    </div>
+                </article>
+                <!-- C Domain project -->
+                <article class="module-card m-domain" data-modules="C" data-personas="A B C">
+                    <div class="module-id">C</div>
+                    <div class="module-body">
+                        <h3>领域项目 <span class="module-en">Domain Project</span></h3>
+                        <p>按行业 / 区域 / 主题划分的领域级项目协同与里程碑。</p>
+                        <div class="module-tags"><span class="tag-pill p-A">访客</span><span class="tag-pill p-B">领导</span><span class="tag-pill p-C">生产</span></div>
+                    </div>
+                </article>
+                <!-- D Performance -->
+                <article class="module-card m-perf" data-modules="D" data-personas="B C D">
+                    <div class="module-id">D</div>
+                    <div class="module-body">
+                        <h3>绩效计分卡 <span class="module-en">Performance Scorecard</span></h3>
+                        <p>关键 KPI / OEE / 良品率 等指标的实时计分卡与对标分析。</p>
+                        <div class="module-tags"><span class="tag-pill p-B">领导</span><span class="tag-pill p-C">生产</span><span class="tag-pill p-D">工厂</span></div>
+                    </div>
+                </article>
+                <!-- E Skills list -->
+                <article class="module-card m-skills" data-modules="E" data-personas="C">
+                    <div class="module-id">E</div>
+                    <div class="module-body">
+                        <h3>技能清单 <span class="module-en">Skills List</span></h3>
+                        <p>按岗位 / 等级梳理的 ADM 技能矩阵与个人能力图谱。</p>
+                        <div class="module-tags"><span class="tag-pill p-C">生产</span></div>
+                    </div>
+                </article>
+                <!-- F Training -->
+                <article class="module-card m-training" data-modules="F" data-personas="C">
+                    <div class="module-id">F</div>
+                    <div class="module-body">
+                        <h3>在线培训 <span class="module-en">Training Online</span></h3>
+                        <p>视频课程 / 认证路径 / 在线考试 / 学习记录追踪。</p>
+                        <div class="module-tags"><span class="tag-pill p-C">生产</span></div>
+                    </div>
+                </article>
+                <!-- G Visit needs -->
+                <article class="module-card m-visitn" data-modules="G" data-personas="C">
+                    <div class="module-id">G</div>
+                    <div class="module-body">
+                        <h3>参观需求清单 <span class="module-en">Visit Needs List</span></h3>
+                        <p>工厂对内 / 对外参观申请的提交、审批与档期管理。</p>
+                        <div class="module-tags"><span class="tag-pill p-C">生产</span></div>
+                    </div>
+                </article>
+                <!-- H Lighthouse -->
+                <article class="module-card m-lighthouse" data-modules="H" data-personas="C">
+                    <div class="module-id">H</div>
+                    <div class="module-body">
+                        <h3>灯塔工厂参观 <span class="module-en">Lighthouse Factory BP/GP Sharing</span></h3>
+                        <p>世界级灯塔工厂的参观安排与最佳实践分享。</p>
+                        <div class="module-tags"><span class="tag-pill p-C">生产</span></div>
+                    </div>
+                </article>
+                <!-- I GP/BP sharing -->
+                <article class="module-card m-share" data-modules="I" data-personas="A B C D">
+                    <div class="module-id">I</div>
+                    <div class="module-body">
+                        <h3>最佳实践分享 <span class="module-en">GP/BP Sharing</span></h3>
+                        <p>跨工厂 / 跨项目 / 跨领域的 Good Practice / Best Practice 沉淀。</p>
+                        <div class="module-tags"><span class="tag-pill p-A">访客</span><span class="tag-pill p-B">领导</span><span class="tag-pill p-C">生产</span><span class="tag-pill p-D">工厂</span></div>
+                    </div>
+                </article>
+                <!-- J Tools -->
+                <article class="module-card m-tools" data-modules="J" data-personas="C">
+                    <div class="module-id">J</div>
+                    <div class="module-body">
+                        <h3>工具箱 <span class="module-en">Tools (AI / Useful Methods)</span></h3>
+                        <p>AI 工具 / 实用方法论 / 模板下载 —— 让生产/技术人员事半功倍。</p>
+                        <div class="module-tags"><span class="tag-pill p-C">生产</span></div>
+                    </div>
+                </article>
+                <!-- K Audit -->
+                <article class="module-card m-audit" data-modules="K" data-personas="C D">
+                    <div class="module-id">K</div>
+                    <div class="module-body">
+                        <h3>审核申请/日历 <span class="module-en">Audit Application & Calendar</span></h3>
+                        <p>内审 / 外审 / 认证申请的提交流程 + 全年审核日历。</p>
+                        <div class="module-tags"><span class="tag-pill p-C">生产</span><span class="tag-pill p-D">工厂</span></div>
+                    </div>
+                </article>
+                <!-- L Traceability -->
+                <article class="module-card m-trace" data-modules="L" data-personas="D">
+                    <div class="module-id">L</div>
+                    <div class="module-body">
+                        <h3>追溯性 <span class="module-en">Traceability</span></h3>
+                        <p>物料 / 工艺 / 设备的全链路追溯与一键反查。</p>
+                        <div class="module-tags"><span class="tag-pill p-D">工厂</span></div>
+                    </div>
+                </article>
+                <!-- M API -->
+                <article class="module-card m-api" data-modules="M" data-personas="D">
+                    <div class="module-id">M</div>
+                    <div class="module-body">
+                        <h3>API 链接/扫描 <span class="module-en">API Link (Scan ABC)</span></h3>
+                        <p>与 MES / ERP / WMS 等系统对接的 API 文档与扫码集成。</p>
+                        <div class="module-tags"><span class="tag-pill p-D">工厂</span></div>
+                    </div>
+                </article>
+                <!-- N Sourcing -->
+                <article class="module-card m-source" data-modules="N" data-personas="D">
+                    <div class="module-id">N</div>
+                    <div class="module-body">
+                        <h3>寻源查询 <span class="module-en">Sourcing Searching</span></h3>
+                        <p>供应商寻源 / 比价 / 历史合作记录的统一查询入口。</p>
+                        <div class="module-tags"><span class="tag-pill p-D">工厂</span></div>
+                    </div>
+                </article>
+                <!-- O Q&A -->
+                <article class="module-card m-qa" data-modules="O" data-personas="A B C D">
+                    <div class="module-id">O</div>
+                    <div class="module-body">
+                        <h3>留言本 <span class="module-en">Q&amp;A / Feedback</span></h3>
+                        <p>提问、建议、反馈 —— 留言后由平台运营 24h 内回复。</p>
+                        <div class="module-tags"><span class="tag-pill p-A">访客</span><span class="tag-pill p-B">领导</span><span class="tag-pill p-C">生产</span><span class="tag-pill p-D">工厂</span></div>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- Quick Access Section -->
-    <section class="quick-access" id="quick-access">
-        <div class="section-header">
-            <div class="section-tag">Quick Access</div>
-            <h2 class="section-title">Frequently Used</h2>
-            <p class="section-desc">One-click access to the tools and resources you use every day.</p>
-        </div>
-        <div class="qa-grid">
-            <div class="qa-card">
-                <div class="qa-icon">📋</div>
-                <h3>Supplier Evaluation</h3>
-                <p>Comprehensive supplier assessment tools with scoring algorithms and performance tracking.</p>
-                <div class="card-arrow">→</div>
+    <!-- ===== 4 看板预览 ===== -->
+    <section class="dashboard-section" id="dashboards">
+        <div class="container">
+            <div class="section-head">
+                <div class="section-eyebrow">按角色进入看板</div>
+                <h2>4 个一站式工作台</h2>
+                <p>每个看板把"该画像最常用"的 4-6 个模块拼成一个工作台。点 persona 卡片后这里会自动滚到对应看板。</p>
             </div>
-            <div class="qa-card">
-                <div class="qa-icon">🎓</div>
-                <h3>Training Programs</h3>
-                <p>Upskill with certified courses in advanced manufacturing technologies and methodologies.</p>
-                <div class="card-arrow">→</div>
-            </div>
-            <div class="qa-card">
-                <div class="qa-icon">🏭</div>
-                <h3>Lighthouse Visits</h3>
-                <p>Virtual and physical tours of industry-leading smart manufacturing facilities.</p>
-                <div class="card-arrow">→</div>
-            </div>
-            <div class="qa-card">
-                <div class="qa-icon">📊</div>
-                <h3>Skill Inventory</h3>
-                <p>Map and track team capabilities against industry 5.0 competency frameworks.</p>
-                <div class="card-arrow">→</div>
-            </div>
-            <div class="qa-card">
-                <div class="qa-icon">🎯</div>
-                <h3>Maturity Assessment</h3>
-                <p>Evaluate organizational readiness across digital, operational, and innovation dimensions.</p>
-                <div class="card-arrow">→</div>
-            </div>
-            <div class="qa-card">
-                <div class="qa-icon">🔍</div>
-                <h3>Audit Portal</h3>
-                <p>Streamlined compliance checking and audit trail management for quality assurance.</p>
-                <div class="card-arrow">→</div>
+
+            <div class="dashboard-grid" id="dashboardGrid">
+                <!-- 访客看板 -->
+                <div class="dashboard-card" data-persona="A">
+                    <div class="dashboard-head"><span class="d-emoji">👀</span><h3>访客视图 · Discover</h3></div>
+                    <div class="dashboard-body">
+                        <div class="kpi-mini"><div class="kpi-num">15</div><div class="kpi-label">个核心模块</div></div>
+                        <div class="kpi-mini"><div class="kpi-num">4</div><div class="kpi-label">类用户画像</div></div>
+                        <ul class="d-list">
+                            <li>📘 平台是什么 → <a href="#modules">B NEA 项目</a></li>
+                            <li>🌍 在做什么 → <a href="#modules">C 领域项目</a></li>
+                            <li>✨ 谁做得好 → <a href="#modules">I 最佳实践</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 领导看板 -->
+                <div class="dashboard-card" data-persona="B">
+                    <div class="dashboard-head"><span class="d-emoji">📊</span><h3>领导视图 · Lead</h3></div>
+                    <div class="dashboard-body">
+                        <div class="kpi-mini"><div class="kpi-num">D</div><div class="kpi-label">绩效计分卡</div></div>
+                        <div class="kpi-mini"><div class="kpi-num">A</div><div class="kpi-label">组织架构</div></div>
+                        <ul class="d-list">
+                            <li>📈 表现如何 → <a href="#modules">D 绩效计分卡</a></li>
+                            <li>📂 谁在推进 → <a href="#modules">A 组织架构</a></li>
+                            <li>📰 行业资讯 → <a href="#modules">I 最佳实践</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 生产/技术看板 -->
+                <div class="dashboard-card dashboard-featured" data-persona="C">
+                    <div class="dashboard-head"><span class="d-emoji">🛠️</span><h3>生产/技术视图 · Build</h3><span class="d-badge">最广</span></div>
+                    <div class="dashboard-body">
+                        <div class="kpi-mini"><div class="kpi-num">E</div><div class="kpi-label">技能清单</div></div>
+                        <div class="kpi-mini"><div class="kpi-num">F</div><div class="kpi-label">在线培训</div></div>
+                        <div class="kpi-mini"><div class="kpi-num">J</div><div class="kpi-label">AI 工具箱</div></div>
+                        <div class="kpi-mini"><div class="kpi-num">K</div><div class="kpi-label">审核申请</div></div>
+                        <ul class="d-list">
+                            <li>📚 我要学 → <a href="#modules">E 技能 + F 培训</a></li>
+                            <li>🤖 用 AI → <a href="#modules">J 工具箱</a></li>
+                            <li>🏆 看灯塔 → <a href="#modules">H 灯塔工厂</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 工厂看板 -->
+                <div class="dashboard-card" data-persona="D">
+                    <div class="dashboard-head"><span class="d-emoji">🏭</span><h3>工厂视图 · Operate</h3></div>
+                    <div class="dashboard-body">
+                        <div class="kpi-mini"><div class="kpi-num">K</div><div class="kpi-label">审核申请</div></div>
+                        <div class="kpi-mini"><div class="kpi-num">L</div><div class="kpi-label">追溯性</div></div>
+                        <ul class="d-list">
+                            <li>✅ 申请审核 → <a href="#modules">K 审核申请</a></li>
+                            <li>🔎 查追溯 → <a href="#modules">L 追溯性</a></li>
+                            <li>🔌 接系统 → <a href="#modules">M API 链接</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Performance Section -->
-    <section class="performance" id="performance">
-        <div class="section-header">
-            <div class="section-tag">Performance Metrics</div>
-            <h2 class="section-title">Domain Health</h2>
-            <p class="section-desc">Real-time insights into operational excellence and continuous improvement indicators.</p>
-        </div>
-        <div class="perf-grid">
-            <div class="perf-card">
-                <div class="perf-metric">A+</div>
-                <div class="perf-label">SCAN Score</div>
-                <div class="perf-desc">Supply Chain Assessment Network</div>
+    <!-- ===== 留言板 ===== -->
+    <section class="board-section" id="board">
+        <div class="container">
+            <div class="section-head">
+                <div class="section-eyebrow">Q&amp;A · 留言本</div>
+                <h2>有想法？直接说。24h 内回复。</h2>
+                <p>留言会保存在本机浏览器，运营人员导出后会在 GitHub Discussions 同步留档。所有留言支持回复与置顶。</p>
             </div>
-            <div class="perf-card">
-                <div class="perf-metric">94</div>
-                <div class="perf-label">AMD Index</div>
-                <div class="perf-desc">Advanced Manufacturing Development</div>
-            </div>
-            <div class="perf-card">
-                <div class="perf-metric">98%</div>
-                <div class="perf-label">NEA Rating</div>
-                <div class="perf-desc">Operational Excellence Achievement</div>
+
+            <div class="board-layout">
+                <!-- 留言提交 -->
+                <form class="board-form" id="boardForm" novalidate>
+                    <h3>📝 写一条留言</h3>
+                    <div class="form-row">
+                        <label>
+                            <span>你的身份（可匿名）</span>
+                            <select name="persona" required>
+                                <option value="A">👀 访客</option>
+                                <option value="B">📊 领导</option>
+                                <option value="C" selected>🛠️ 生产/技术</option>
+                                <option value="D">🏭 工厂</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span>称呼</span>
+                            <input type="text" name="name" placeholder="比如 张工 / 王厂长" maxlength="20" required>
+                        </label>
+                    </div>
+                    <label>
+                        <span>留言内容</span>
+                        <textarea name="message" rows="4" placeholder="建议、问题、Bug 反馈都可以…（最多 500 字）" maxlength="500" required></textarea>
+                    </label>
+                    <div class="form-actions">
+                        <span class="form-hint">按 ⌘+Enter 快速提交</span>
+                        <button type="submit" class="btn btn-primary">提交留言</button>
+                    </div>
+                </form>
+
+                <!-- 留言列表 -->
+                <div class="board-list-wrap">
+                    <div class="board-list-head">
+                        <h3>💬 全部留言 <span class="count-badge" id="msgCount">0</span></h3>
+                        <select id="msgFilter" class="msg-filter">
+                            <option value="all">全部</option>
+                            <option value="A">访客</option>
+                            <option value="B">领导</option>
+                            <option value="C">生产/技术</option>
+                            <option value="D">工厂</option>
+                        </select>
+                    </div>
+                    <ul class="board-list" id="boardList" aria-live="polite"></ul>
+                    <div class="board-empty" id="boardEmpty">
+                        <div class="empty-emoji">🌱</div>
+                        <p>还没有留言。要不要做第一个？</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Tools Section -->
-    <section class="nav-section" id="tools">
-        <div class="section-header">
-            <div class="section-tag">Tools & Resources</div>
-            <h2 class="section-title">Capability Building</h2>
-            <p class="section-desc">Equip your team with the right tools to drive manufacturing excellence.</p>
-        </div>
-        <div class="nav-grid">
-            <div class="nav-card">
-                <h4>Skill Lists</h4>
-                <p>Comprehensive competency frameworks aligned with Industry 5.0 requirements.</p>
-            </div>
-            <div class="nav-card">
-                <h4>Maturity Mapping</h4>
-                <p>Visual journey maps tracking progression through manufacturing maturity levels.</p>
-            </div>
-            <div class="nav-card">
-                <h4>Resource Library</h4>
-                <p>Best practices, templates, and case studies from industry leaders.</p>
-            </div>
-            <div class="nav-card">
-                <h4>Support Portal</h4>
-                <p>Technical assistance, FAQs, and expert consultations for domain users.</p>
-            </div>
-        </div>
-    </section>
+    </main>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
+    <!-- ===== Footer ===== -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
             <div class="footer-brand">
-                <h3>ADM Domain</h3>
-                <p>Driving innovation in advanced manufacturing through intelligent systems, collaborative ecosystems, and human-centric automation. Built for Industry 5.0.</p>
+                <div class="brand-mark">ADM</div>
+                <p>先进制造域 · 由 4 类用户 × 15 个模块 驱动</p>
             </div>
-            <div class="footer-links">
-                <h4>Navigation</h4>
-                <ul>
-                    <li><a href="#navigation">Org Charts</a></li>
-                    <li><a href="#navigation">Project Wins</a></li>
-                    <li><a href="#performance">Performance</a></li>
-                    <li><a href="#tools">Tools</a></li>
-                </ul>
+            <div class="footer-cols">
+                <div>
+                    <h4>用户入口</h4>
+                    <a href="#persona">访客视图</a>
+                    <a href="#persona">领导视图</a>
+                    <a href="#persona">生产/技术视图</a>
+                    <a href="#persona">工厂视图</a>
+                </div>
+                <div>
+                    <h4>模块</h4>
+                    <a href="#modules">B NEA 项目</a>
+                    <a href="#modules">D 绩效计分卡</a>
+                    <a href="#modules">F 在线培训</a>
+                    <a href="#modules">K 审核申请</a>
+                </div>
+                <div>
+                    <h4>资源</h4>
+                    <a href="https://github.com/chelizi630-cmd/adm-domain" target="_blank" rel="noopener">GitHub 仓库</a>
+                    <a href="#board">留言反馈</a>
+                    <a href="#top">回到顶部 ↑</a>
+                </div>
             </div>
-            <div class="footer-links">
-                <h4>Quick Access</h4>
-                <ul>
-                    <li><a href="#quick-access">Supplier Evaluation</a></li>
-                    <li><a href="#quick-access">Training</a></li>
-                    <li><a href="#quick-access">Lighthouse Visits</a></li>
-                    <li><a href="#quick-access">Skill Inventory</a></li>
-                </ul>
+            <div class="footer-bottom">
+                <p>© 2026 ADM Domain. 由 Cherry AI 协助重构 · 站龄 1 年</p>
             </div>
-            <div class="footer-links">
-                <h4>Support</h4>
-                <ul>
-                    <li><a href="#">Documentation</a></li>
-                    <li><a href="#">Contact IT</a></li>
-                    <li><a href="#">Feedback</a></li>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2026 ADM Domain. All rights reserved.</p>
-            <p>Built with <span>█</span> for Industry 5.0</p>
         </div>
     </footer>
 
-    <script>
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Nav active state on scroll
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-links a');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // Card hover effect with parallax
-        document.querySelectorAll('.qa-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
-            });
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.qa-card, .nav-card, .perf-card').forEach((el, index) => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-            observer.observe(el);
-        });
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
