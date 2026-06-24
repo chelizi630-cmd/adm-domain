@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADM 先进制造域 · Advanced Manufacturing Domain</title>
-    <meta name="description" content="面向访客/领导/生产/工厂 4 类用户画像的先进制造域平台。包含 NEA 项目、领域项目、绩效计分卡、技能培训、审核申请、灯塔工厂等 15 个核心模块。">
+    <meta name="description" content="面向新人 / leader / production specialist / 工厂 4 类用户画像的先进制造域平台。包含 15 个核心模块 (A-O)，按《网站用户画像》矩阵分配，N = Open Day 为全员事件。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Source+Han+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -89,48 +89,56 @@
 
             <!-- 4 入口：persona chooser -->
             <div class="persona-grid" id="persona">
+                <!-- A 我是一个新人 (Newcomer) — 模块 A B C E F I J O（8） -->
                 <a href="#dashboards" class="persona-card persona-A" data-persona="A">
-                    <div class="persona-emoji">👀</div>
+                    <div class="persona-emoji">🆕</div>
                     <div class="persona-meta">
-                        <div class="persona-tag" data-i18n="persona.A.tag">访客 / 初学者</div>
-                        <div class="persona-q" data-i18n="persona.A.q">"这平台是干嘛的？"</div>
+                        <div class="persona-tag" data-i18n="persona.A.tag">我是一个新人</div>
+                        <div class="persona-en" data-i18n="persona.A.en">Newcomer</div>
+                        <div class="persona-q" data-i18n="persona.A.q">"我是新人，想先了解这网站是干嘛的…"</div>
                     </div>
                     <ul class="persona-modules">
-                        <li><span class="mid">B</span> <span data-i18n="mod.B.title">NEA 项目</span></li><li><span class="mid">C</span> <span data-i18n="mod.C.title">领域项目</span></li><li><span class="mid">I</span> <span data-i18n="mod.I.title">最佳实践</span></li>
+                        <li><span class="mid">A</span> <span data-i18n="mod.A.title">组织架构图</span></li><li><span class="mid">B</span> <span data-i18n="mod.B.title">NEA 项目</span></li><li><span class="mid">C</span> <span data-i18n="mod.C.title">领域项目</span></li><li><span class="mid">E</span> <span data-i18n="mod.E.title">技能清单</span></li><li><span class="mid">F</span> <span data-i18n="mod.F.title">在线培训</span></li><li><span class="mid">I</span> <span data-i18n="mod.I.title">最佳实践</span></li><li><span class="mid">J</span> <span data-i18n="mod.J.title">工具箱</span></li><li><span class="mid">O</span> <span data-i18n="mod.O.title">留言本</span></li>
                     </ul>
-                    <div class="persona-cta" data-i18n="persona.A.cta">进入访客视图 →</div>
+                    <div class="persona-cta" data-i18n="persona.A.cta">进入新人视图 →</div>
                 </a>
+                <!-- B 我是一个 leader — 模块 A B C D O（5） -->
                 <a href="#dashboards" class="persona-card persona-B" data-persona="B">
                     <div class="persona-emoji">📊</div>
                     <div class="persona-meta">
-                        <div class="persona-tag" data-i18n="persona.B.tag">领导者</div>
-                        <div class="persona-q" data-i18n="persona.B.q">"目前进展和表现如何？"</div>
+                        <div class="persona-tag" data-i18n="persona.B.tag">我是一个 leader</div>
+                        <div class="persona-en" data-i18n="persona.B.en">Leader</div>
+                        <div class="persona-q" data-i18n="persona.B.q">"我是 leader，需要了解进展与表现…"</div>
                     </div>
                     <ul class="persona-modules">
-                        <li><span class="mid">B</span> <span data-i18n="mod.B.title">NEA 项目</span></li><li><span class="mid">C</span> <span data-i18n="mod.C.title">领域项目</span></li><li><span class="mid">D</span> <span data-i18n="mod.D.title">绩效计分卡</span></li><li><span class="mid">I</span> <span data-i18n="mod.I.title">最佳实践</span></li><li><span class="mid">A</span> <span data-i18n="mod.A.title">组织架构图</span></li>
+                        <li><span class="mid">A</span> <span data-i18n="mod.A.title">组织架构图</span></li><li><span class="mid">B</span> <span data-i18n="mod.B.title">NEA 项目</span></li><li><span class="mid">C</span> <span data-i18n="mod.C.title">领域项目</span></li><li><span class="mid">D</span> <span data-i18n="mod.D.title">绩效计分卡</span></li><li><span class="mid">O</span> <span data-i18n="mod.O.title">留言本</span></li>
                     </ul>
                     <div class="persona-cta" data-i18n="persona.B.cta">进入领导看板 →</div>
                 </a>
+                <!-- C production specialist — 模块 A D E F G H I J K L O（11 最广） -->
                 <a href="#dashboards" class="persona-card persona-C persona-featured" data-persona="C">
-                    <div class="persona-badge" data-i18n="persona.C.badge">最广</div>
+                    <div class="persona-badge" data-i18n="persona.C.badge">最广 · 11 模块</div>
                     <div class="persona-emoji">🛠️</div>
                     <div class="persona-meta">
-                        <div class="persona-tag" data-i18n="persona.C.tag">生产 / 技术</div>
-                        <div class="persona-q" data-i18n="persona.C.q">"我怎么做得更好？"</div>
+                        <div class="persona-tag" data-i18n="persona.C.tag">production specialist</div>
+                        <div class="persona-en" data-i18n="persona.C.en">Production Specialist</div>
+                        <div class="persona-q" data-i18n="persona.C.q">"我是生产/技术专员，想知道怎么做得更好…"</div>
                     </div>
                     <ul class="persona-modules">
-                        <li><span class="mid">E</span> <span data-i18n="mod.E.title">技能清单</span></li><li><span class="mid">F</span> <span data-i18n="mod.F.title">在线培训</span></li><li><span class="mid">J</span> <span data-i18n="mod.J.title">工具箱</span></li><li><span class="mid">K</span> <span data-i18n="mod.K.title">审核申请</span></li><li><span class="mid">H</span> <span data-i18n="mod.H.title">灯塔工厂参观</span></li><li class="more" data-i18n="persona.C.more">+ 4 更多</li>
+                        <li><span class="mid">E</span> <span data-i18n="mod.E.title">技能清单</span></li><li><span class="mid">F</span> <span data-i18n="mod.F.title">在线培训</span></li><li><span class="mid">H</span> <span data-i18n="mod.H.title">灯塔工厂参观</span></li><li><span class="mid">J</span> <span data-i18n="mod.J.title">工具箱</span></li><li><span class="mid">K</span> <span data-i18n="mod.K.title">审核申请</span></li><li><span class="mid">G</span> <span data-i18n="mod.G.title">参观需求清单</span></li><li><span class="mid">L</span> <span data-i18n="mod.L.title">技术趋势</span></li><li><span class="mid">D</span> <span data-i18n="mod.D.title">绩效计分卡</span></li><li><span class="mid">I</span> <span data-i18n="mod.I.title">最佳实践</span></li><li><span class="mid">A</span> <span data-i18n="mod.A.title">组织架构图</span></li><li><span class="mid">O</span> <span data-i18n="mod.O.title">留言本</span></li>
                     </ul>
                     <div class="persona-cta" data-i18n="persona.C.cta">进入生产/技术看板 →</div>
                 </a>
+                <!-- D 工厂 — 模块 C F G H I J K L M O（10） -->
                 <a href="#dashboards" class="persona-card persona-D" data-persona="D">
                     <div class="persona-emoji">🏭</div>
                     <div class="persona-meta">
-                        <div class="persona-tag" data-i18n="persona.D.tag">工厂管理者</div>
-                        <div class="persona-q" data-i18n="persona.D.q">"我们工厂达标了吗？"</div>
+                        <div class="persona-tag" data-i18n="persona.D.tag">工厂</div>
+                        <div class="persona-en" data-i18n="persona.D.en">Factory</div>
+                        <div class="persona-q" data-i18n="persona.D.q">"我是工厂，要了解达标情况与系统对接…"</div>
                     </div>
                     <ul class="persona-modules">
-                        <li><span class="mid">K</span> <span data-i18n="mod.K.title">审核申请</span></li><li><span class="mid">A</span> <span data-i18n="mod.A.title">组织架构图</span></li><li><span class="mid">I</span> <span data-i18n="mod.I.title">最佳实践</span></li><li><span class="mid">D</span> <span data-i18n="mod.D.title">绩效计分卡</span></li>
+                        <li><span class="mid">C</span> <span data-i18n="mod.C.title">领域项目</span></li><li><span class="mid">F</span> <span data-i18n="mod.F.title">在线培训</span></li><li><span class="mid">G</span> <span data-i18n="mod.G.title">参观需求清单</span></li><li><span class="mid">H</span> <span data-i18n="mod.H.title">灯塔工厂参观</span></li><li><span class="mid">I</span> <span data-i18n="mod.I.title">最佳实践</span></li><li><span class="mid">J</span> <span data-i18n="mod.J.title">工具箱</span></li><li><span class="mid">K</span> <span data-i18n="mod.K.title">审核申请</span></li><li><span class="mid">L</span> <span data-i18n="mod.L.title">技术趋势</span></li><li><span class="mid">M</span> <span data-i18n="mod.M.title">API 链接</span></li><li><span class="mid">O</span> <span data-i18n="mod.O.title">留言本</span></li>
                     </ul>
                     <div class="persona-cta" data-i18n="persona.D.cta">进入工厂看板 →</div>
                 </a>
@@ -149,110 +157,122 @@
 
             <div class="module-filter" id="moduleFilter" role="tablist" aria-label="按画像筛选模块">
                 <button class="filter-btn active" data-filter="all" data-i18n="filter.all">全部 (15)</button>
-                <button class="filter-btn" data-filter="A" data-i18n="filter.A">👀 访客</button>
-                <button class="filter-btn" data-filter="B" data-i18n="filter.B">📊 领导</button>
-                <button class="filter-btn" data-filter="C" data-i18n="filter.C">🛠️ 生产</button>
+                <button class="filter-btn" data-filter="A" data-i18n="filter.A">🆕 新人</button>
+                <button class="filter-btn" data-filter="B" data-i18n="filter.B">📊 leader</button>
+                <button class="filter-btn" data-filter="C" data-i18n="filter.C">🛠️ production</button>
                 <button class="filter-btn" data-filter="D" data-i18n="filter.D">🏭 工厂</button>
             </div>
 
             <div class="module-grid" id="moduleGrid">
-                <!-- A Organization chart -->
-                <article class="module-card m-org" data-modules="A" data-personas="B D">
+                <!-- A Organization chart —— A 新人 + B leader + C production -->
+                <article class="module-card m-org" data-modules="A" data-personas="A B C">
                     <div class="module-id">A</div>
                     <div class="module-body">
                         <h3 data-i18n="mod.A.title">组织架构图 <span class="module-en" data-i18n="mod.A.en">Organization Chart</span></h3>
                         <p data-i18n="mod.A.desc">NEA / 领域项目 / 工厂团队的组织层级与汇报关系。</p>
-                        <div class="module-tags"><span class="tag-pill p-B" data-i18n="tag.B">领导</span><span class="tag-pill p-D" data-i18n="tag.D">工厂</span></div>
+                        <div class="module-tags"><span class="tag-pill p-A" data-i18n="tag.A">🆕 新人</span><span class="tag-pill p-B" data-i18n="tag.B">leader</span><span class="tag-pill p-C" data-i18n="tag.C">production</span></div>
                     </div>
                 </article>
-                <article class="module-card m-nea" data-modules="B" data-personas="A B C">
+                <!-- B NEA —— A 新人 + B leader -->
+                <article class="module-card m-nea" data-modules="B" data-personas="A B">
                     <div class="module-id">B</div>
                     <div class="module-body">
                         <h3 data-i18n="mod.B.title">NEA 项目 <span class="module-en" data-i18n="mod.B.en">NEA Project</span></h3>
                         <p data-i18n="mod.B.desc">下一代先进制造项目立项与进展。</p>
-                        <div class="module-tags"><span class="tag-pill p-A" data-i18n="tag.A">访客</span><span class="tag-pill p-B" data-i18n="tag.B">领导</span><span class="tag-pill p-C" data-i18n="tag.C">生产</span></div>
+                        <div class="module-tags"><span class="tag-pill p-A" data-i18n="tag.A">🆕 新人</span><span class="tag-pill p-B" data-i18n="tag.B">leader</span></div>
                     </div>
                 </article>
-                <article class="module-card m-domain" data-modules="C" data-personas="A B C">
+                <!-- C Domain —— A 新人 + B leader + D 工厂 -->
+                <article class="module-card m-domain" data-modules="C" data-personas="A B D">
                     <div class="module-id">C</div>
                     <div class="module-body">
                         <h3 data-i18n="mod.C.title">领域项目 <span class="module-en" data-i18n="mod.C.en">Domain Project</span></h3>
                         <p data-i18n="mod.C.desc">按行业 / 区域 / 主题划分的领域级项目协同与里程碑。</p>
-                        <div class="module-tags"><span class="tag-pill p-A" data-i18n="tag.A">访客</span><span class="tag-pill p-B" data-i18n="tag.B">领导</span><span class="tag-pill p-C" data-i18n="tag.C">生产</span></div>
+                        <div class="module-tags"><span class="tag-pill p-A" data-i18n="tag.A">🆕 新人</span><span class="tag-pill p-B" data-i18n="tag.B">leader</span><span class="tag-pill p-D" data-i18n="tag.D">工厂</span></div>
                     </div>
                 </article>
-                <article class="module-card m-perf" data-modules="D" data-personas="B C D">
+                <!-- D Perf report —— B leader + C production -->
+                <article class="module-card m-perf" data-modules="D" data-personas="B C">
                     <div class="module-id">D</div>
                     <div class="module-body">
-                        <h3 data-i18n="mod.D.title">绩效计分卡 <span class="module-en" data-i18n="mod.D.en">Performance Scorecard</span></h3>
+                        <h3 data-i18n="mod.D.title">绩效计分卡 <span class="module-en" data-i18n="mod.D.en">Performance Scorecard (DKT KPI)</span></h3>
                         <p data-i18n="mod.D.desc">关键 KPI / OEE / 良品率 等指标的实时计分卡与对标分析。</p>
-                        <div class="module-tags"><span class="tag-pill p-B" data-i18n="tag.B">领导</span><span class="tag-pill p-C" data-i18n="tag.C">生产</span><span class="tag-pill p-D" data-i18n="tag.D">工厂</span></div>
+                        <div class="module-tags"><span class="tag-pill p-B" data-i18n="tag.B">leader</span><span class="tag-pill p-C" data-i18n="tag.C">production</span></div>
                     </div>
                 </article>
-                <article class="module-card m-skills" data-modules="E" data-personas="C">
+                <!-- E Skills —— A 新人 + C production -->
+                <article class="module-card m-skills" data-modules="E" data-personas="A C">
                     <div class="module-id">E</div>
                     <div class="module-body">
                         <h3 data-i18n="mod.E.title">技能清单 <span class="module-en" data-i18n="mod.E.en">Skills List</span></h3>
                         <p data-i18n="mod.E.desc">按岗位 / 等级梳理的 ADM 技能矩阵与个人能力图谱。</p>
-                        <div class="module-tags"><span class="tag-pill p-C" data-i18n="tag.C">生产</span></div>
+                        <div class="module-tags"><span class="tag-pill p-A" data-i18n="tag.A">🆕 新人</span><span class="tag-pill p-C" data-i18n="tag.C">production</span></div>
                     </div>
                 </article>
-                <article class="module-card m-training" data-modules="F" data-personas="C">
+                <!-- F Training —— A 新人 + C production + D 工厂 -->
+                <article class="module-card m-training" data-modules="F" data-personas="A C D">
                     <div class="module-id">F</div>
                     <div class="module-body">
                         <h3 data-i18n="mod.F.title">在线培训 <span class="module-en" data-i18n="mod.F.en">Training Online</span></h3>
                         <p data-i18n="mod.F.desc">视频课程 / 认证路径 / 在线考试 / 学习记录追踪。</p>
-                        <div class="module-tags"><span class="tag-pill p-C" data-i18n="tag.C">生产</span></div>
+                        <div class="module-tags"><span class="tag-pill p-A" data-i18n="tag.A">🆕 新人</span><span class="tag-pill p-C" data-i18n="tag.C">production</span><span class="tag-pill p-D" data-i18n="tag.D">工厂</span></div>
                     </div>
                 </article>
-                <article class="module-card m-visitn" data-modules="G" data-personas="C">
+                <!-- G Visit needs —— C production + D 工厂 -->
+                <article class="module-card m-visitn" data-modules="G" data-personas="C D">
                     <div class="module-id">G</div>
                     <div class="module-body">
                         <h3 data-i18n="mod.G.title">参观需求清单 <span class="module-en" data-i18n="mod.G.en">Visit Needs List</span></h3>
                         <p data-i18n="mod.G.desc">工厂对内 / 对外参观申请的提交、审批与档期管理。</p>
-                        <div class="module-tags"><span class="tag-pill p-C" data-i18n="tag.C">生产</span></div>
+                        <div class="module-tags"><span class="tag-pill p-C" data-i18n="tag.C">production</span><span class="tag-pill p-D" data-i18n="tag.D">工厂</span></div>
                     </div>
                 </article>
-                <article class="module-card m-lighthouse" data-modules="H" data-personas="C">
+                <!-- H Lighthouse —— C production + D 工厂 -->
+                <article class="module-card m-lighthouse" data-modules="H" data-personas="C D">
                     <div class="module-id">H</div>
                     <div class="module-body">
                         <h3 data-i18n="mod.H.title">灯塔工厂参观 <span class="module-en" data-i18n="mod.H.en">Lighthouse Factory BP/GP Sharing</span></h3>
                         <p data-i18n="mod.H.desc">世界级灯塔工厂的参观安排与最佳实践分享。</p>
-                        <div class="module-tags"><span class="tag-pill p-C" data-i18n="tag.C">生产</span></div>
+                        <div class="module-tags"><span class="tag-pill p-C" data-i18n="tag.C">production</span><span class="tag-pill p-D" data-i18n="tag.D">工厂</span></div>
                     </div>
                 </article>
-                <article class="module-card m-share" data-modules="I" data-personas="A B C D">
+                <!-- I GP/BP —— A 新人 + C production + D 工厂（不再归属 leader） -->
+                <article class="module-card m-share" data-modules="I" data-personas="A C D">
                     <div class="module-id">I</div>
                     <div class="module-body">
                         <h3 data-i18n="mod.I.title">最佳实践分享 <span class="module-en" data-i18n="mod.I.en">GP/BP Sharing</span></h3>
                         <p data-i18n="mod.I.desc">跨工厂 / 跨项目 / 跨领域的 Good Practice / Best Practice 沉淀。</p>
-                        <div class="module-tags"><span class="tag-pill p-A" data-i18n="tag.A">访客</span><span class="tag-pill p-B" data-i18n="tag.B">领导</span><span class="tag-pill p-C" data-i18n="tag.C">生产</span><span class="tag-pill p-D" data-i18n="tag.D">工厂</span></div>
+                        <div class="module-tags"><span class="tag-pill p-A" data-i18n="tag.A">🆕 新人</span><span class="tag-pill p-C" data-i18n="tag.C">production</span><span class="tag-pill p-D" data-i18n="tag.D">工厂</span></div>
                     </div>
                 </article>
-                <article class="module-card m-tools" data-modules="J" data-personas="C">
+                <!-- J Tools —— A 新人 + C production + D 工厂 -->
+                <article class="module-card m-tools" data-modules="J" data-personas="A C D">
                     <div class="module-id">J</div>
                     <div class="module-body">
                         <h3 data-i18n="mod.J.title">工具箱 <span class="module-en" data-i18n="mod.J.en">Tools (AI / Useful Methods)</span></h3>
                         <p data-i18n="mod.J.desc">AI 工具 / 实用方法论 / 模板下载 —— 让生产/技术人员事半功倍。</p>
-                        <div class="module-tags"><span class="tag-pill p-C" data-i18n="tag.C">生产</span></div>
+                        <div class="module-tags"><span class="tag-pill p-A" data-i18n="tag.A">🆕 新人</span><span class="tag-pill p-C" data-i18n="tag.C">production</span><span class="tag-pill p-D" data-i18n="tag.D">工厂</span></div>
                     </div>
                 </article>
+                <!-- K Audit —— C production + D 工厂 -->
                 <article class="module-card m-audit" data-modules="K" data-personas="C D">
                     <div class="module-id">K</div>
                     <div class="module-body">
                         <h3 data-i18n="mod.K.title">审核申请/日历 <span class="module-en" data-i18n="mod.K.en">Audit Application & Calendar</span></h3>
                         <p data-i18n="mod.K.desc">内审 / 外审 / 认证申请的提交流程 + 全年审核日历。</p>
-                        <div class="module-tags"><span class="tag-pill p-C" data-i18n="tag.C">生产</span><span class="tag-pill p-D" data-i18n="tag.D">工厂</span></div>
+                        <div class="module-tags"><span class="tag-pill p-C" data-i18n="tag.C">production</span><span class="tag-pill p-D" data-i18n="tag.D">工厂</span></div>
                     </div>
                 </article>
-                <article class="module-card m-trace" data-modules="L" data-personas="D">
+                <!-- L Tech Trends —— C production + D 工厂（重命名：从追溯性 → 技术趋势） -->
+                <article class="module-card m-trends" data-modules="L" data-personas="C D">
                     <div class="module-id">L</div>
                     <div class="module-body">
-                        <h3 data-i18n="mod.L.title">追溯性 <span class="module-en" data-i18n="mod.L.en">Traceability</span></h3>
-                        <p data-i18n="mod.L.desc">物料 / 工艺 / 设备的全链路追溯与一键反查。</p>
-                        <div class="module-tags"><span class="tag-pill p-D" data-i18n="tag.D">工厂</span></div>
+                        <h3 data-i18n="mod.L.title">技术趋势 <span class="module-en" data-i18n="mod.L.en">Tech Trends</span></h3>
+                        <p data-i18n="mod.L.desc">行业 / 工艺 / 自动化 / AI 的最新技术趋势、研报与对标情报。</p>
+                        <div class="module-tags"><span class="tag-pill p-C" data-i18n="tag.C">production</span><span class="tag-pill p-D" data-i18n="tag.D">工厂</span></div>
                     </div>
                 </article>
+                <!-- M API —— 仅 D 工厂 -->
                 <article class="module-card m-api" data-modules="M" data-personas="D">
                     <div class="module-id">M</div>
                     <div class="module-body">
@@ -261,20 +281,22 @@
                         <div class="module-tags"><span class="tag-pill p-D" data-i18n="tag.D">工厂</span></div>
                     </div>
                 </article>
-                <article class="module-card m-source" data-modules="N" data-personas="D">
+                <!-- N Open Day —— 不归属任何画像（全员事件） -->
+                <article class="module-card m-openday" data-modules="N" data-personas="">
                     <div class="module-id">N</div>
                     <div class="module-body">
-                        <h3 data-i18n="mod.N.title">寻源查询 <span class="module-en" data-i18n="mod.N.en">Sourcing Searching</span></h3>
-                        <p data-i18n="mod.N.desc">供应商寻源 / 比价 / 历史合作记录的统一查询入口。</p>
-                        <div class="module-tags"><span class="tag-pill p-D" data-i18n="tag.D">工厂</span></div>
+                        <h3 data-i18n="mod.N.title">Open Day <small class="module-extra" data-i18n="mod.N.extra">(重大事件)</small> <span class="module-en" data-i18n="mod.N.en">Open Day (Major Events)</span></h3>
+                        <p data-i18n="mod.N.desc">面向全员的开放日 / 大会 / 大事件日程与报名入口。</p>
+                        <div class="module-tags"><span class="tag-pill tag-all" data-i18n="tag.all">🌐 全员</span></div>
                     </div>
                 </article>
+                <!-- O Q&A —— 全部画像 -->
                 <article class="module-card m-qa" data-modules="O" data-personas="A B C D">
                     <div class="module-id">O</div>
                     <div class="module-body">
                         <h3 data-i18n="mod.O.title">留言本 <span class="module-en" data-i18n="mod.O.en">Q&A / Feedback</span></h3>
                         <p data-i18n="mod.O.desc">提问、建议、反馈 —— 留言后由平台运营 24h 内回复。</p>
-                        <div class="module-tags"><span class="tag-pill p-A" data-i18n="tag.A">访客</span><span class="tag-pill p-B" data-i18n="tag.B">领导</span><span class="tag-pill p-C" data-i18n="tag.C">生产</span><span class="tag-pill p-D" data-i18n="tag.D">工厂</span></div>
+                        <div class="module-tags"><span class="tag-pill p-A" data-i18n="tag.A">🆕 新人</span><span class="tag-pill p-B" data-i18n="tag.B">leader</span><span class="tag-pill p-C" data-i18n="tag.C">production</span><span class="tag-pill p-D" data-i18n="tag.D">工厂</span></div>
                     </div>
                 </article>
             </div>
@@ -291,53 +313,72 @@
             </div>
 
             <div class="dashboard-grid" id="dashboardGrid">
+                <!-- A 新人 — A, B, C, E, F, I, J, O（8） -->
                 <div class="dashboard-card" data-persona="A">
-                    <div class="dashboard-head"><span class="d-emoji">👀</span><h3 data-i18n="dash.A.title">访客视图 · Discover</h3></div>
+                    <div class="dashboard-head"><span class="d-emoji">🆕</span><h3 data-i18n="dash.A.title">新人视图 · Discover</h3></div>
                     <div class="dashboard-body">
-                        <div class="kpi-mini"><div class="kpi-num">15</div><div class="kpi-label" data-i18n="dash.A.kpi1">个核心模块</div></div>
+                        <div class="kpi-mini"><div class="kpi-num">8</div><div class="kpi-label" data-i18n="dash.A.kpi1">个核心模块</div></div>
                         <div class="kpi-mini"><div class="kpi-num">4</div><div class="kpi-label" data-i18n="dash.A.kpi2">类用户画像</div></div>
                         <ul class="d-list">
-                            <li data-i18n="dash.A.item1">📘 平台是什么 → B NEA 项目</li>
-                            <li data-i18n="dash.A.item2">🌍 在做什么 → C 领域项目</li>
-                            <li data-i18n="dash.A.item3">✨ 谁做得好 → I 最佳实践</li>
+                            <li data-i18n="dash.A.item1">🏢 谁是谁 → A 组织架构图</li>
+                            <li data-i18n="dash.A.item2">📘 平台是什么 → B NEA 项目 + C 领域项目</li>
+                            <li data-i18n="dash.A.item3">📚 我要学 → E 技能清单 + F 在线培训</li>
+                            <li data-i18n="dash.A.item4">✨ 看谁做得好 → I 最佳实践</li>
+                            <li data-i18n="dash.A.item5">🤖 用 AI / 工具 → J 工具箱</li>
+                            <li data-i18n="dash.A.item6">💬 有问题 → O 留言本</li>
                         </ul>
                     </div>
                 </div>
+                <!-- B leader — A, B, C, D, O（5） -->
                 <div class="dashboard-card" data-persona="B">
                     <div class="dashboard-head"><span class="d-emoji">📊</span><h3 data-i18n="dash.B.title">领导视图 · Lead</h3></div>
                     <div class="dashboard-body">
-                        <div class="kpi-mini"><div class="kpi-num">D</div><div class="kpi-label" data-i18n="dash.B.kpi1">绩效计分卡</div></div>
+                        <div class="kpi-mini"><div class="kpi-num">5</div><div class="kpi-label" data-i18n="dash.B.kpi1">个核心模块</div></div>
+                        <div class="kpi-mini"><div class="kpi-num">D</div><div class="kpi-label" data-i18n="dash.B.kpi1b">绩效计分卡</div></div>
                         <div class="kpi-mini"><div class="kpi-num">A</div><div class="kpi-label" data-i18n="dash.B.kpi2">组织架构</div></div>
                         <ul class="d-list">
                             <li data-i18n="dash.B.item1">📈 表现如何 → D 绩效计分卡</li>
                             <li data-i18n="dash.B.item2">📂 谁在推进 → A 组织架构</li>
-                            <li data-i18n="dash.B.item3">📰 行业资讯 → I 最佳实践</li>
+                            <li data-i18n="dash.B.item3">🚀 重点项目 → B NEA + C 领域</li>
+                            <li data-i18n="dash.B.item4">💬 员工反馈 → O 留言本</li>
                         </ul>
                     </div>
                 </div>
+                <!-- C production specialist — A, D, E, F, G, H, I, J, K, L, O（11） -->
                 <div class="dashboard-card dashboard-featured" data-persona="C">
-                    <div class="dashboard-head"><span class="d-emoji">🛠️</span><h3 data-i18n="dash.C.title">生产/技术视图 · Build</h3><span class="d-badge" data-i18n="dash.C.badge">最广</span></div>
+                    <div class="dashboard-head"><span class="d-emoji">🛠️</span><h3 data-i18n="dash.C.title">生产/技术视图 · Build</h3><span class="d-badge" data-i18n="dash.C.badge">最广 · 11 模块</span></div>
                     <div class="dashboard-body">
+                        <div class="kpi-mini"><div class="kpi-num">11</div><div class="kpi-label" data-i18n="dash.C.kpi0">个核心模块</div></div>
                         <div class="kpi-mini"><div class="kpi-num">E</div><div class="kpi-label" data-i18n="dash.C.kpi1">技能清单</div></div>
                         <div class="kpi-mini"><div class="kpi-num">F</div><div class="kpi-label" data-i18n="dash.C.kpi2">在线培训</div></div>
                         <div class="kpi-mini"><div class="kpi-num">J</div><div class="kpi-label" data-i18n="dash.C.kpi3">AI 工具箱</div></div>
                         <div class="kpi-mini"><div class="kpi-num">K</div><div class="kpi-label" data-i18n="dash.C.kpi4">审核申请</div></div>
                         <ul class="d-list">
-                            <li data-i18n="dash.C.item1">📚 我要学 → E 技能 + F 培训</li>
+                            <li data-i18n="dash.C.item1">📚 学技能 → E 技能 + F 培训</li>
                             <li data-i18n="dash.C.item2">🤖 用 AI → J 工具箱</li>
-                            <li data-i18n="dash.C.item3">🏆 看灯塔 → H 灯塔工厂</li>
+                            <li data-i18n="dash.C.item3">🏆 看灯塔 / 提参观 → H + G</li>
+                            <li data-i18n="dash.C.item4">📋 申请审核 → K</li>
+                            <li data-i18n="dash.C.item5">📊 看绩效 → D 计分卡</li>
+                            <li data-i18n="dash.C.item6">🔭 追趋势 → L 技术趋势</li>
+                            <li data-i18n="dash.C.item7">🏢 / ✨ / 💬 → A / I / O</li>
                         </ul>
                     </div>
                 </div>
+                <!-- D 工厂 — C, F, G, H, I, J, K, L, M, O（10） -->
                 <div class="dashboard-card" data-persona="D">
                     <div class="dashboard-head"><span class="d-emoji">🏭</span><h3 data-i18n="dash.D.title">工厂视图 · Operate</h3></div>
                     <div class="dashboard-body">
+                        <div class="kpi-mini"><div class="kpi-num">10</div><div class="kpi-label" data-i18n="dash.D.kpi0">个核心模块</div></div>
                         <div class="kpi-mini"><div class="kpi-num">K</div><div class="kpi-label" data-i18n="dash.D.kpi1">审核申请</div></div>
-                        <div class="kpi-mini"><div class="kpi-num">L</div><div class="kpi-label" data-i18n="dash.D.kpi2">追溯性</div></div>
+                        <div class="kpi-mini"><div class="kpi-num">M</div><div class="kpi-label" data-i18n="dash.D.kpi2">API 链接</div></div>
                         <ul class="d-list">
-                            <li data-i18n="dash.D.item1">✅ 申请审核 → K 审核申请</li>
-                            <li data-i18n="dash.D.item2">🔎 查追溯 → L 追溯性</li>
-                            <li data-i18n="dash.D.item3">🔌 接系统 → M API 链接</li>
+                            <li data-i18n="dash.D.item1">✅ 申请审核 → K</li>
+                            <li data-i18n="dash.D.item2">🔌 接系统 → M API 链接</li>
+                            <li data-i18n="dash.D.item3">📋 项目协同 → C 领域项目</li>
+                            <li data-i18n="dash.D.item4">🏆 / 📝 参观 & 培训 → H + G + F</li>
+                            <li data-i18n="dash.D.item5">✨ 用工具 & 学 → I + J</li>
+                            <li data-i18n="dash.D.item6">🔭 追趋势 → L</li>
+                            <li data-i18n="dash.D.item7">💬 反馈 → O</li>
                         </ul>
                     </div>
                 </div>
@@ -361,9 +402,9 @@
                         <label>
                             <span data-i18n="form.persona">你的身份（可匿名）</span>
                             <select name="persona" required>
-                                <option value="A" data-i18n="persona.A.tag">👀 访客</option>
-                                <option value="B" data-i18n="persona.B.tag">📊 领导</option>
-                                <option value="C" selected data-i18n="persona.C.tag">🛠️ 生产/技术</option>
+                                <option value="A" data-i18n="persona.A.tag">🆕 我是一个新人</option>
+                                <option value="B" data-i18n="persona.B.tag">📊 我是一个 leader</option>
+                                <option value="C" selected data-i18n="persona.C.tag">🛠️ production specialist</option>
                                 <option value="D" data-i18n="persona.D.tag">🏭 工厂</option>
                             </select>
                         </label>
@@ -387,9 +428,9 @@
                         <h3 data-i18n="list.h3">💬 全部留言 <span class="count-badge" id="msgCount">0</span></h3>
                         <select id="msgFilter" class="msg-filter">
                             <option value="all" data-i18n="list.filter.all">全部</option>
-                            <option value="A" data-i18n="list.filter.A">访客</option>
-                            <option value="B" data-i18n="list.filter.B">领导</option>
-                            <option value="C" data-i18n="list.filter.C">生产/技术</option>
+                            <option value="A" data-i18n="list.filter.A">🆕 新人</option>
+                            <option value="B" data-i18n="list.filter.B">leader</option>
+                            <option value="C" data-i18n="list.filter.C">production</option>
                             <option value="D" data-i18n="list.filter.D">工厂</option>
                         </select>
                     </div>
@@ -415,10 +456,10 @@
             <div class="footer-cols">
                 <div>
                     <h4 data-i18n="footer.col1.title">用户入口</h4>
-                    <a href="#persona" data-i18n="footer.col1.l1">访客视图</a>
-                    <a href="#persona" data-i18n="footer.col1.l2">领导视图</a>
-                    <a href="#persona" data-i18n="footer.col1.l3">生产/技术视图</a>
-                    <a href="#persona" data-i18n="footer.col1.l4">工厂视图</a>
+                    <a href="#persona" data-i18n="footer.col1.l1">🆕 新人视图</a>
+                    <a href="#persona" data-i18n="footer.col1.l2">📊 leader 视图</a>
+                    <a href="#persona" data-i18n="footer.col1.l3">🛠️ production 视图</a>
+                    <a href="#persona" data-i18n="footer.col1.l4">🏭 工厂视图</a>
                 </div>
                 <div>
                     <h4 data-i18n="footer.col2.title">模块</h4>
@@ -435,7 +476,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p data-i18n="footer.bottom">© 2026 ADM Domain. 由 Cherry AI 协助重构 · 站龄 1 年</p>
+                <p data-i18n="footer.bottom">© 2026 ADM Domain. 由 Cherry AI 协助重构 · v2.0 升级至《网站用户画像》矩阵 · 站龄 1 年</p>
             </div>
         </div>
     </footer>

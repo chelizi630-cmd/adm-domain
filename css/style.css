@@ -15,11 +15,12 @@
     --accent: #00A8E8;
     --accent-glow: rgba(0, 168, 232, 0.18);
 
-    /* 4 画像配色 */
-    --p-A: #7B61FF;   /* 访客 - 紫 */
-    --p-B: #0057B8;   /* 领导 - 蓝 */
-    --p-C: #FF6B35;   /* 生产 - 橙 */
-    --p-D: #1FAA59;   /* 工厂 - 绿 */
+    /* 4 画像配色 —— 按图片《网站用户画像》 */
+    --p-A: #7B61FF;   /* A = 我是一个新人 (Newcomer) - 紫 */
+    --p-B: #0057B8;   /* B = 我是一个 leader - 蓝 */
+    --p-C: #FF6B35;   /* C = production specialist - 橙 */
+    --p-D: #1FAA59;   /* D = 工厂 (Factory) - 绿 */
+    --p-all: #6B7280; /* N = Open Day 全员 - 灰 */
 
     /* 中性色（浅色专业风） */
     --bg: #F7F9FC;
@@ -471,6 +472,14 @@ img, svg { display: block; max-width: 100%; }
     margin-bottom: 16px;
     line-height: 1.4;
 }
+.persona-en {
+    font-size: 11px;
+    color: var(--ink-3);
+    font-family: 'JetBrains Mono', monospace;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    letter-spacing: 0.3px;
+}
 
 .persona-modules {
     list-style: none;
@@ -655,6 +664,27 @@ section { padding: 80px 0; }
 .tag-pill.p-B { background: var(--p-B); }
 .tag-pill.p-C { background: var(--p-C); }
 .tag-pill.p-D { background: var(--p-D); }
+.tag-pill.tag-all {
+    background: linear-gradient(90deg, var(--p-A), var(--p-B), var(--p-C), var(--p-D));
+    background-size: 200% 100%;
+    color: #fff;
+    animation: tag-shimmer 6s linear infinite;
+}
+@keyframes tag-shimmer {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+.module-extra {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink-3);
+    background: var(--bg-soft);
+    padding: 1px 6px;
+    border-radius: 4px;
+    margin-left: 4px;
+    vertical-align: middle;
+}
 
 .module-card.hidden { display: none; }
 
