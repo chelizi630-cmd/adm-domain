@@ -119,8 +119,76 @@ function renderSearchResults(results) {
     });
 }
 
-// ====== 留言板 (localStorage) ======
+// ====== 留言板 (localStorage + GAS 后端) ======
 const BOARD_KEY = 'adm_board_messages_v1';
+
+// ★ 部署新的 GAS 留言后端后，把下面的 URL 改成真正的 /exec 端点
+const GAS_URL = 'https://script.google.com/macros/s/PASTE_NEW_DEPLOYMENT_ID/exec';
+const GAS_TIMEOUT_MS = 4000;
+
+function gasFetch(params = {}) {
+    const u = new URL(GAS_URL);
+    Object.entries(params).forEach(([k, v]) => u.searchParams.set(k, v));
+    return Promise.race([
+        fetch(u.toString(), { method: 'GET', redirect: 'follow' }),
+        new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), GAS_TIMEOUT_MS)),
+    ]);
+}
+
+function gasPost(body) {
+    return Promise.race([
+        fetch(GAS_URL, {
+            method: 'POST',
+            redirect: 'follow',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify(body),
+        }),
+        new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), GAS_TIMEOUT_MS)),
+    ]);
+}
+
+function normalizeId(s) { return String(s || '').trim().slice(0, 64); }
+
+async function postMessageToGAS(msg) {
+    try {
+        const r = await gasPost({ action: 'submit', ...msg });
+        const data = await r.json();
+        if (!data || !data.ok) throw new Error((data && data.error) || 'unknown');
+        return { ok: true, id: data.id || msg.id };
+    } catch (err) {
+        return { ok: false, error: String((err && err.message) || err) };
+    }
+}
+
+async function fetchMessagesFromGAS() {
+    try {
+        const r = await gasFetch({ action: 'list', limit: '200' });
+        const data = await r.json();
+        if (!data || !data.ok || !Array.isArray(data.messages)) throw new Error('bad payload');
+        return data.messages;
+    } catch {
+        return null;
+    }
+}
+
+function mergeMessages(local, remote) {
+    // remote 是 source of truth；local 用来兜底 + 暂存离线提交
+    const byId = new Map();
+    [...(remote || []), ...(local || [])].forEach(m => {
+        if (!m || !m.id) return;
+        const id = normalizeId(m.id);
+        if (!id) return;
+        if (!byId.has(id)) {
+            byId.set(id, m);
+        } else {
+            const cur = byId.get(id);
+            const curReplies = (cur.replies || []).length;
+            const newReplies = (m.replies || []).length;
+            byId.set(id, newReplies > curReplies ? m : cur);
+        }
+    });
+    return Array.from(byId.values()).sort((a, b) => (b.time || 0) - (a.time || 0));
+}
 
 function loadBoard() {
     try {
@@ -322,6 +390,16 @@ document.addEventListener('DOMContentLoaded', () => {
     defaultSeed();
     renderBoard();
 
+    // 启动时拉一次服务端留言，merge 进 localStorage 后重渲（离线降级）
+    (async () => {
+        const remote = await fetchMessagesFromGAS();
+        if (remote) {
+            const local = loadBoard();
+            saveBoard(mergeMessages(local, remote));
+            renderBoard(document.getElementById('msgFilter').value);
+        }
+    })();
+
     document.getElementById('boardForm').addEventListener('submit', e => {
         e.preventDefault();
         const fd = new FormData(e.target);
@@ -329,14 +407,28 @@ document.addEventListener('DOMContentLoaded', () => {
         const name = (fd.get('name') || '').toString().trim() || '匿名';
         const persona = (fd.get('persona') || 'C').toString();
         if (!message) return;
+        const id = 'm' + Date.now() + Math.random().toString(36).slice(2, 6);
         const arr = loadBoard();
-        arr.push({
-            id: 'm' + Date.now() + Math.random().toString(36).slice(2, 6),
-            persona, name, message, time: Date.now(), replies: []
-        });
+        arr.push({ id, persona, name, message, time: Date.now(), replies: [], _pendingSync: true });
         saveBoard(arr);
         e.target.reset();
         renderBoard();
+
+        // 异步 POST 到 GAS；成功清掉 pending，失败保留 localStorage 兜底
+        postMessageToGAS({ id, persona, name, message }).then(res => {
+            const list = loadBoard();
+            const i = list.findIndex(m => m.id === id);
+            if (i < 0) return;
+            if (res.ok) {
+                list[i]._pendingSync = false;
+                if (res.id && res.id !== id) list[i].serverId = res.id;
+                saveBoard(list);
+                renderBoard(document.getElementById('msgFilter').value);
+            } else {
+                console.warn('[adm-board] GAS submit failed, kept locally:', res.error);
+            }
+        });
+
         // 滚到列表
         document.getElementById('boardList').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
