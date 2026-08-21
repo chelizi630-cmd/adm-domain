@@ -305,7 +305,8 @@ function renderBoard(filterPersona = 'all') {
 }
 
 // ====== 初始化所有交互 ======
-document.addEventListener('DOMContentLoaded', () => {
+// domReady 兏底：脚本位于 body 底部，DOMContentLoaded 可能已 fire 过
+function init() {
 
     // --- i18n 初始化（最先！）---
     const initialLang = detectInitialLang();
@@ -598,4 +599,11 @@ document.addEventListener('DOMContentLoaded', () => {
             io.observe(el);
         });
     }
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    // DOMContentLoaded 已 fire 过，立即跑
+    init();
+}
