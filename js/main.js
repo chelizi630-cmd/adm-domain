@@ -503,30 +503,38 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- A 组织架构详情：Tab 切换（2026 当前 ⇄ 2030 未来）---
-    const orgTabs = document.querySelectorAll('.org-tab');
-    const orgViews = document.querySelectorAll('.org-view[data-view]');
-    orgTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            const target = tab.getAttribute('data-tab');
-            orgTabs.forEach(t => {
-                const isActive = t === tab;
-                t.classList.toggle('active', isActive);
-                t.setAttribute('aria-selected', isActive ? 'true' : 'false');
-            });
-            orgViews.forEach(view => {
-                const isMatch = view.getAttribute('data-view') === target;
-                view.hidden = !isMatch;
-            });
-            // 切换时把 section 重新触发一次 fade-in 动画
-            const matched = document.querySelector(`.org-view[data-view="${target}"]`);
-            if (matched) {
-                matched.style.animation = 'none';
-                // force reflow
-                // eslint-disable-next-line no-unused-expressions
-                matched.offsetHeight;
-                matched.style.animation = '';
-            }
+    // 使用事件委托绑在 document 上，避免 DOMContentLoaded 时机问题
+    function switchOrgTab(target) {
+        if (!target) return;
+        const orgTabs = document.querySelectorAll('.org-tab');
+        const orgViews = document.querySelectorAll('.org-view[data-view]');
+        orgTabs.forEach(t => {
+            const isActive = t.getAttribute('data-tab') === target;
+            t.classList.toggle('active', isActive);
+            t.setAttribute('aria-selected', isActive ? 'true' : 'false');
         });
+        orgViews.forEach(view => {
+            const isMatch = view.getAttribute('data-view') === target;
+            view.hidden = !isMatch;
+        });
+        // 重新触发 fade-in 动画
+        const matched = document.querySelector(`.org-view[data-view="${target}"]`);
+        if (matched) {
+            matched.style.animation = 'none';
+            // force reflow
+            // eslint-disable-next-line no-unused-expressions
+            matched.offsetHeight;
+            matched.style.animation = '';
+        }
+    }
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.org-tab');
+        if (!btn) return;
+        const target = btn.getAttribute('data-tab');
+        if (target) {
+            e.preventDefault();
+            switchOrgTab(target);
+        }
     });
 
     // --- Persona 卡片 → 高亮对应看板 ---
