@@ -387,12 +387,50 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- 留言板 ---
-    defaultSeed();
-    renderBoard();
+    // 如果后端 (Code.gs) 已经注入留言，检测 <meta name="board-prefilled">
+    // 有则跳过 defaultSeed + 首次 renderBoard，避免清空后端渲染的内容
+    const prefilled = document.querySelector('meta[name="board-prefilled"]');
+    if (prefilled) {
+        // 从已渲染的 boardList 同步到 localStorage，让后续提交/筛选可用
+        const items = Array.from(document.querySelectorAll('.msg-item')).map(li => ({
+            id: li.dataset.id || ('srv-' + Date.now() + Math.random().toString(36).slice(2, 6)),
+            persona: (li.querySelector('.msg-persona')?.classList && Array.from(li.querySelector('.msg-persona').classList).find(c => 'ABCD'.includes(c))) || 'A',
+            name: li.querySelector('.msg-name')?.textContent || '匿名',
+            message: li.querySelector('.msg-body')?.textContent || '',
+            time: Date.now(),
+            replies: []
+        }));
+        if (items.length > 0) {
+            saveBoard(items);
+            const countEl = document.getElementById('msgCount');
+            if (countEl) countEl.textContent = String(items.length);
+        } else {
+            defaultSeed();
+            renderBoard();
+        }
+    } else {
+        defaultSeed();
+        renderBoard();
+    }
 
-    // 启动时拉一次服务端留言，merge 进 localStorage 后重渲（离线降级）
+    // 启动时优先读 GAS 注入的 <template id="messages-data">（服务端 fetch，绕过浏览器 CSP），
+    // 如果失败再 fallback 到客户端 fetchMessagesFromGAS
     (async () => {
-        const remote = await fetchMessagesFromGAS();
+        let remote = null;
+        try {
+            const tmpl = document.getElementById('messages-data');
+            if (tmpl) {
+                const raw = tmpl.textContent || tmpl.innerHTML || '';
+                if (raw) {
+                    remote = JSON.parse(raw);
+                    if (!Array.isArray(remote)) remote = null;
+                }
+            }
+        } catch (err) {
+            console.warn('[adm-board] parse messages-data failed', err);
+            remote = null;
+        }
+        if (!remote) remote = await fetchMessagesFromGAS();
         if (remote) {
             const local = loadBoard();
             saveBoard(mergeMessages(local, remote));
@@ -461,6 +499,33 @@ document.addEventListener('DOMContentLoaded', () => {
                     card.classList.toggle('hidden', !personas.includes(f));
                 }
             });
+        });
+    });
+
+    // --- A 组织架构详情：Tab 切换（2026 当前 ⇄ 2030 未来）---
+    const orgTabs = document.querySelectorAll('.org-tab');
+    const orgViews = document.querySelectorAll('.org-view[data-view]');
+    orgTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const target = tab.getAttribute('data-tab');
+            orgTabs.forEach(t => {
+                const isActive = t === tab;
+                t.classList.toggle('active', isActive);
+                t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            });
+            orgViews.forEach(view => {
+                const isMatch = view.getAttribute('data-view') === target;
+                view.hidden = !isMatch;
+            });
+            // 切换时把 section 重新触发一次 fade-in 动画
+            const matched = document.querySelector(`.org-view[data-view="${target}"]`);
+            if (matched) {
+                matched.style.animation = 'none';
+                // force reflow
+                // eslint-disable-next-line no-unused-expressions
+                matched.offsetHeight;
+                matched.style.animation = '';
+            }
         });
     });
 
