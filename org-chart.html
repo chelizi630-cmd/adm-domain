@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title data-i18n="orgA.page.title">A 组织架构图 · ADM 先进制造域</title>
+    <meta name="description" data-i18n-attr="content" data-i18n="orgA.page.desc" content="ADM 域 A 组织架构详情：2026 当前组织结构 + 2030 数字转型生态系统演进全景。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Source+Han+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?v=4">
+    <style>
+        /* Standalone page back-link bar (above section) */
+        .org-page-back {
+            background: var(--bg, #f7f9fc);
+            border-bottom: 1px solid var(--line, #e6ebf2);
+            padding: 14px 0;
+        }
+        .org-page-back a {
+            color: var(--primary, #0057B8);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .org-page-back a:hover {
+            color: var(--cyan, #00D4FF);
+            transform: translateX(-3px);
+        }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main" data-i18n="skip.link">跳到主要内容</a>
+
+    <header class="site-header" id="top">
+        <div class="header-inner">
+            <a href="index.html" class="brand">
+                <div class="brand-mark">ADM</div>
+                <div class="brand-text">
+                    <div class="brand-zh" data-i18n="hero.eyebrow" style="font-weight:700;font-size:15px;line-height:1.2;">先进制造域</div>
+                    <div class="brand-en">Advanced Manufacturing Domain</div>
+                </div>
+            </a>
+
+            <nav class="primary-nav" aria-label="主导航">
+                <a href="index.html#persona" data-i18n="nav.persona">用户入口</a>
+                <a href="index.html#modules" data-i18n="nav.modules">模块</a>
+                <a href="index.html#dashboards" data-i18n="nav.dashboards">看板</a>
+                <a href="index.html#board" data-i18n="nav.board">留言</a>
+
+                <div class="lang-switcher" id="langSwitcher">
+                    <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="语言 / Language">
+                        <span class="lang-flag" id="langFlag">🇨🇳</span>
+                        <span class="lang-code" id="langCode">中文</span>
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="lang-menu" id="langMenu" role="menu">
+                        <button class="lang-option" data-lang="zh" role="menuitem">
+                            <span class="lang-flag">🇨🇳</span>
+                            <span class="lang-name">中文（默认）</span>
+                            <span class="lang-sub">ZH</span>
+                        </button>
+                        <div class="lang-divider" role="separator"></div>
+                        <button class="lang-option" data-lang="en" role="menuitem">
+                            <span class="lang-flag">🇬🇧</span>
+                            <span class="lang-name">English</span>
+                            <span class="lang-sub">EN</span>
+                        </button>
+                        <button class="lang-option" data-lang="fr" role="menuitem">
+                            <span class="lang-flag">🇫🇷</span>
+                            <span class="lang-name">Français</span>
+                            <span class="lang-sub">FR</span>
+                        </button>
+                    </div>
+                </div>
+
+                <a href="https://github.com/chelizi630-cmd/adm-domain" class="nav-github" aria-label="GitHub 仓库" target="_blank" rel="noopener">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57v-2.02C5.7 21.7 5 19.66 5 19.66c-.55-1.4-1.34-1.77-1.34-1.77-1.1-.75.08-.74.08-.74 1.2.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .31.22.7.83.58A12 12 0 0 0 12 .3"/></svg>
+                </a>
+            </nav>
+
+            <button class="hamburger" id="hamburger" aria-label="菜单" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main">
+        <div class="org-page-back">
+            <div class="container">
+                <a href="index.html" aria-label="返回主页">← <span data-i18n="orgA.back">返回 ADM 主页</span></a>
+            </div>
+        </div>
+
+        <section class="org-section">
+            <div class="container">
+                <div class="section-head">
+                    <div class="section-eyebrow" data-i18n="orgA.eyebrow">A · 组织架构详情 · Organization Chart</div>
+                    <h2 data-i18n="orgA.title">谁是谁，谁做什么，未来怎么走</h2>
+                    <p data-i18n="orgA.desc">2026 现行结构 → 2030 数字转型生态系统演进全景</p>
+                </div>
+
+                <div class="org-tabs" role="tablist">
+                    <button type="button" class="org-tab active" data-tab="now" role="tab" aria-selected="true">
+                        <span class="org-tab-dot now"></span>
+                        <span data-i18n="orgA.tab.now">📍 2026 当前架构</span>
+                    </button>
+                    <button type="button" class="org-tab" data-tab="future" role="tab" aria-selected="false">
+                        <span class="org-tab-dot future"></span>
+                        <span data-i18n="orgA.tab.future">🚀 2030 未来架构</span>
+                    </button>
+                </div>
+
+                <div class="org-view" data-view="now">
+                    <div class="org-hierarchy">
+                        <div class="org-box org-global">
+                            <div class="org-tier" data-i18n="orgA.tier.global">Global</div>
+                            <div class="org-name">Ivo Silva</div>
+                        </div>
+                        <div class="org-arrow-down" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="28" height="28"><path d="M12 4v16M5 13l7 7 7-7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <div class="org-box org-nea">
+                            <div class="org-tier" data-i18n="orgA.tier.nea">North East Asia</div>
+                            <div class="org-name">Gavin YANG</div>
+                            <div class="org-comms">Communication: <strong>Xiaoqing Wu</strong></div>
+                        </div>
+                    </div>
+
+                    <div class="org-block">
+                        <h3 class="org-block-title">
+                            <span class="org-block-icon">👥</span>
+                            <span data-i18n="orgA.core.title">核心团队 · Who do what</span>
+                        </h3>
+                        <p class="org-block-sub" data-i18n="orgA.core.sub">由 NEA 直属的 4 位核心成员 —— 各负责一个技术领域 + 共担数字化转型</p>
+                        <div class="org-core-grid">
+                            <div class="org-core-card">
+                                <div class="org-core-head">
+                                    <div class="org-core-avatar c1">D</div>
+                                    <div>
+                                        <div class="org-core-name">Dominic XU</div>
+                                        <div class="org-core-community">PHP + CCS</div>
+                                    </div>
+                                </div>
+                                <ul class="org-core-roles">
+                                    <li><span class="role-tag r-lead">Leader</span> <span data-i18n="orgA.role.NEA_PM">NEA Digital Project Leader</span></li>
+                                    <li><span class="role-tag r-tech">Tech</span> <span data-i18n="orgA.role.trace">Traceability</span></li>
+                                    <li><span class="role-tag r-expert">Expert</span> Expert Digital Transfer</li>
+                                </ul>
+                            </div>
+                            <div class="org-core-card">
+                                <div class="org-core-head">
+                                    <div class="org-core-avatar c2">J</div>
+                                    <div>
+                                        <div class="org-core-name">Jian ZHOU</div>
+                                        <div class="org-core-community">TU + SE</div>
+                                    </div>
+                                </div>
+                                <ul class="org-core-roles">
+                                    <li><span class="role-tag r-expert">Expert</span> <span data-i18n="orgA.role.api">API Expert</span></li>
+                                    <li><span class="role-tag r-tech">Tech</span> SCAN ABC</li>
+                                    <li><span class="role-tag r-tech">Tech</span> <span data-i18n="orgA.role.dataconn">Data connection</span></li>
+                                    <li><span class="role-tag r-expert">Expert</span> Expert Digital Transfer</li>
+                                </ul>
+                            </div>
+                            <div class="org-core-card">
+                                <div class="org-core-head">
+                                    <div class="org-core-avatar c3">M</div>
+                                    <div>
+                                        <div class="org-core-name">Martin CHEN</div>
+                                        <div class="org-core-community">Footwear + BME</div>
+                                    </div>
+                                </div>
+                                <ul class="org-core-roles">
+                                    <li><span class="role-tag r-expert">Expert</span> Advanced Assessment</li>
+                                    <li><span class="role-tag r-expert">Expert</span> Advanced Manufacturing (I.O)</li>
+                                    <li><span class="role-tag r-expert">Expert</span> Expert Digital Transfer</li>
+                                </ul>
+                            </div>
+                            <div class="org-core-card">
+                                <div class="org-core-head">
+                                    <div class="org-core-avatar c4">K</div>
+                                    <div>
+                                        <div class="org-core-name">Kristin CHANG</div>
+                                        <div class="org-core-community">Taiwan</div>
+                                    </div>
+                                </div>
+                                <ul class="org-core-roles">
+                                    <li><span class="role-tag r-tech">Tech</span> SPILL</li>
+                                    <li class="org-core-extra"><span data-i18n="orgA.role.title">职位</span> · <strong>OPM AD</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="org-block">
+                        <h3 class="org-block-title">
+                            <span class="org-block-icon">🔁</span>
+                            <span data-i18n="orgA.relay.title">社区接力团队 · Community Relay</span>
+                        </h3>
+                        <p class="org-block-sub" data-i18n="orgA.relay.sub">按技术栈 / 职能划分的技术支持成员 —— 谁负责什么 stack 一目了然</p>
+                        <div class="org-relay-grid">
+                            <div class="org-relay-cell"><div class="org-relay-tech">PHP</div><div class="org-relay-name">Shawn XU</div></div>
+                            <div class="org-relay-cell"><div class="org-relay-tech">FE</div><div class="org-relay-name">Dominic</div></div>
+                            <div class="org-relay-cell org-relay-multi">
+                                <div class="org-relay-tech">TU</div>
+                                <div class="org-relay-name">Wei XU</div>
+                                <div class="org-relay-name">Tally TAM</div>
+                            </div>
+                            <div class="org-relay-cell"><div class="org-relay-tech">SE</div><div class="org-relay-name">Eric ZHAO</div></div>
+                            <div class="org-relay-cell"><div class="org-relay-tech">BME</div><div class="org-relay-name">Gracia WU</div></div>
+                        </div>
+                    </div>
+
+                    <div class="org-block">
+                        <h3 class="org-block-title">
+                            <span class="org-block-icon">🛡️</span>
+                            <span data-i18n="orgA.admin.title">Admin 团队成员 · Administrative Members</span>
+                        </h3>
+                        <p class="org-block-sub" data-i18n="orgA.admin.sub">覆盖项目管理 / 协调 / 行政支持的成员 —— 多数人也出现在核心/接力团队</p>
+                        <div class="org-admin-cloud">
+                            <span class="org-admin-tag">Martin CHEN</span>
+                            <span class="org-admin-tag">Jian ZHOU</span>
+                            <span class="org-admin-tag">Christina ZHANG</span>
+                            <span class="org-admin-tag">Ethan YE</span>
+                            <span class="org-admin-tag">Larry WANG</span>
+                            <span class="org-admin-tag">Wei XU</span>
+                            <span class="org-admin-tag">Gracia WU</span>
+                            <span class="org-admin-tag">Gregory</span>
+                            <span class="org-admin-tag">Kan ZHAO</span>
+                            <span class="org-admin-tag">Shawn XU</span>
+                            <span class="org-admin-tag">Kristin CHANG</span>
+                            <span class="org-admin-tag">Dominic XU</span>
+                            <span class="org-admin-tag">Tally TAM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="org-view" data-view="future" hidden>
+                    <h3 class="org-future-title">
+                        <span data-i18n="orgA.future.title">数字转型生态系统 · 6 Layer</span>
+                    </h3>
+                    <p class="org-future-sub" data-i18n="orgA.future.sub">从核心总监到外部合作伙伴的 6 层同心圆 —— 辐射式生态</p>
+
+                    <div class="org-6layer-wrap">
+                        <div class="org-6layer" role="img" aria-label="6 Layer Digital Transformation Ecosystem">
+                            <div class="org-layer org-layer-6">
+                                <span class="org-layer-badge">L6</span>
+                            </div>
+                            <div class="org-layer org-layer-5">
+                                <span class="org-layer-badge">L5</span>
+                            </div>
+                            <div class="org-layer org-layer-4">
+                                <span class="org-layer-badge">L4</span>
+                            </div>
+                            <div class="org-layer org-layer-3">
+                                <span class="org-layer-badge">L3</span>
+                            </div>
+                            <div class="org-layer org-layer-2">
+                                <span class="org-layer-badge">L2</span>
+                            </div>
+                            <div class="org-layer org-layer-1">
+                                <div class="org-layer-content">
+                                    <div class="org-layer-num">L1</div>
+                                    <div class="org-layer-tag" data-i18n="orgA.layer1.tag">数字总监</div>
+                                    <div class="org-layer-en">Director</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="org-layer-defs">
+                            <h4 data-i18n="orgA.defs.title">6 层职责定义</h4>
+                            <dl>
+                                <dt><span class="lbl lbl-1">L1</span> <span data-i18n="orgA.layer1.dt">数字转型总监</span></dt>
+                                <dd data-i18n="orgA.layer1.dd">统筹全球数字战略和生态系统的一致性</dd>
+                                <dt><span class="lbl lbl-2">L2</span> <span data-i18n="orgA.layer2.dt">D2MS 专家</span></dt>
+                                <dd data-i18n="orgA.layer2.dd">衔接技术标准与卓越运营</dd>
+                                <dt><span class="lbl lbl-3">L3</span> <span data-i18n="orgA.layer3.dt">内部 / 外部技术专家</span></dt>
+                                <dd data-i18n="orgA.layer3.dd">专注于新的技术诀窍（如面板供应商）</dd>
+                                <dt><span class="lbl lbl-4">L4</span> <span data-i18n="orgA.layer4.dt">项目组长 / 中继</span></dt>
+                                <dd data-i18n="orgA.layer4.dd">启动并推动跨部门的关键领域项目</dd>
+                                <dt><span class="lbl lbl-5">L5</span> <span data-i18n="orgA.layer5.dt">外部技术专家</span></dt>
+                                <dd data-i18n="orgA.layer5.dd">包括大学、专业供应商和咨询公司</dd>
+                                <dt><span class="lbl lbl-6">L6</span> <span data-i18n="orgA.layer6.dt">外部公司</span></dt>
+                                <dd data-i18n="orgA.layer6.dd">为生态系统提供动力的软件与硬件解决方案商</dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <h3 class="org-evo-title" data-i18n="orgA.evo.title">5 阶段演进路径 · Evolution Path</h3>
+                    <p class="org-future-sub" data-i18n="orgA.evo.sub">从专家画像到生态系统构建的逐步落地</p>
+                    <div class="org-evo-path">
+                        <div class="org-evo-step org-evo-step-active">
+                            <div class="org-evo-num">1</div>
+                            <div class="org-evo-name" data-i18n="orgA.evo.1.name">专家目录 / 人才画像</div>
+                            <div class="org-evo-en">Expert Directory / Talent Mapping</div>
+                        </div>
+                        <div class="org-evo-arrow" aria-hidden="true">→</div>
+                        <div class="org-evo-step">
+                            <div class="org-evo-num">2</div>
+                            <div class="org-evo-name" data-i18n="orgA.evo.2.name">知识库 / 中央资源</div>
+                            <div class="org-evo-en">Knowledge Hub / Central Resources</div>
+                        </div>
+                        <div class="org-evo-arrow" aria-hidden="true">→</div>
+                        <div class="org-evo-step">
+                            <div class="org-evo-num">3</div>
+                            <div class="org-evo-name" data-i18n="orgA.evo.3.name">专家目录（深化）</div>
+                            <div class="org-evo-en">Expert Directory (Deepened)</div>
+                        </div>
+                        <div class="org-evo-arrow" aria-hidden="true">→</div>
+                        <div class="org-evo-step">
+                            <div class="org-evo-num">4</div>
+                            <div class="org-evo-name" data-i18n="orgA.evo.4.name">认证 / 标准化验证</div>
+                            <div class="org-evo-en">Certification / Standardized Validation</div>
+                        </div>
+                        <div class="org-evo-arrow" aria-hidden="true">→</div>
+                        <div class="org-evo-step org-evo-step-goal">
+                            <div class="org-evo-num">5</div>
+                            <div class="org-evo-name" data-i18n="orgA.evo.5.name">生态系统构建</div>
+                            <div class="org-evo-en">Ecosystem Build</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <div class="brand-mark">ADM</div>
+                <p data-i18n="footer.tagline">先进制造域 · 由 4 类用户 × 15 个模块 驱动</p>
+            </div>
+            <div class="footer-cols">
+                <div>
+                    <h4 data-i18n="footer.col1.title">用户入口</h4>
+                    <a href="index.html#persona" data-i18n="footer.col1.l1">🆕 新人视图</a>
+                    <a href="index.html#persona" data-i18n="footer.col1.l2">📊 leader 视图</a>
+                    <a href="index.html#persona" data-i18n="footer.col1.l3">🛠️ production 视图</a>
+                    <a href="index.html#persona" data-i18n="footer.col1.l4">🏭 工厂视图</a>
+                </div>
+                <div>
+                    <h4 data-i18n="footer.col2.title">模块</h4>
+                    <a href="index.html#modules" data-i18n="footer.col2.l1">B NEA 项目</a>
+                    <a href="index.html#modules" data-i18n="footer.col2.l2">D 绩效计分卡</a>
+                    <a href="index.html#modules" data-i18n="footer.col2.l3">F 在线培训</a>
+                    <a href="index.html#modules" data-i18n="footer.col2.l4">K 审核申请</a>
+                </div>
+                <div>
+                    <h4 data-i18n="footer.col3.title">资源</h4>
+                    <a href="https://github.com/chelizi630-cmd/adm-domain" target="_blank" rel="noopener" data-i18n="footer.col3.l1">GitHub 仓库</a>
+                    <a href="index.html#board" data-i18n="footer.col3.l2">留言反馈</a>
+                    <a href="#top" data-i18n="footer.col3.l3">回到顶部 ↑</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer.bottom">© 2026 ADM Domain. 由 Cherry AI 协助重构 · v2.0 升级至《网站用户画像》矩阵 · 站龄 1 年</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="i18n.js?v=4"></script>
+    <script src="js/org-chart.js?v=4"></script>
+</body>
+</html>

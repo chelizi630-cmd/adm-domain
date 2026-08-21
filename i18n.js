@@ -259,6 +259,9 @@ const I18N = {
         'orgA.evo.3.name': '专家目录（深化）',
         'orgA.evo.4.name': '认证 / 标准化验证',
         'orgA.evo.5.name': '生态系统构建',
+        'orgA.back': '返回 ADM 主页',
+        'orgA.page.title': 'A 组织架构图 · ADM 先进制造域',
+        'orgA.page.desc': 'ADM 域 A 组织架构详情：2026 当前组织结构 + 2030 数字转型生态系统演进全景。',
 
         'footer.bottom': '© 2026 ADM Domain. 由 Cherry AI 协助重构 · 站龄 1 年',
     },
@@ -506,6 +509,9 @@ const I18N = {
         'orgA.evo.3.name': 'Expert Directory (Deepened)',
         'orgA.evo.4.name': 'Certification / Standardized Validation',
         'orgA.evo.5.name': 'Ecosystem Build',
+        'orgA.back': 'Back to ADM Home',
+        'orgA.page.title': 'A · Organization Chart · ADM',
+        'orgA.page.desc': 'ADM Domain A organization chart: 2026 current structure + 2030 digital transformation ecosystem roadmap.',
 
         'footer.bottom': '© 2026 ADM Domain. Refactored with Cherry AI · Site age: 1 year',
     },
@@ -753,6 +759,9 @@ const I18N = {
         'orgA.evo.3.name': 'Annuaire d\'experts (approfondi)',
         'orgA.evo.4.name': 'Certification / Validation standardisée',
         'orgA.evo.5.name': 'Construction de l\'écosystème',
+        'orgA.back': 'Retour à l\'accueil ADM',
+        'orgA.page.title': 'A · Organigramme · ADM',
+        'orgA.page.desc': 'Détail de l\'organigramme A du domaine ADM : structure actuelle 2026 + feuille de route écosystème 2030.',
 
         'footer.bottom': '© 2026 ADM Domain. Refactorisé avec Cherry AI · 1 an',
     }

@@ -233,6 +233,9 @@ function timeAgo(ts) {
 function renderBoard(filterPersona = 'all') {
     const list = document.getElementById('boardList');
     const empty = document.getElementById('boardEmpty');
+    const msgCount = document.getElementById('msgCount');
+    // 防御：i18n applyLang 会覆盖父 h3 textContent，导致 msgCount span 被抹掉
+    if (!list || !empty || !msgCount) return;
     const msgs = loadBoard()
         .filter(m => filterPersona === 'all' || m.persona === filterPersona)
         .sort((a, b) => b.time - a.time);
@@ -245,7 +248,7 @@ function renderBoard(filterPersona = 'all') {
         fr: { A: 'Visiteur', B: 'Leader', C: 'Production', D: 'Usine' }
     }[lang] || { A: '访客', B: '领导', C: '生产', D: '工厂' };
 
-    document.getElementById('msgCount').textContent = msgs.length;
+    msgCount.textContent = msgs.length;
 
     if (!msgs.length) {
         list.innerHTML = '';
@@ -503,40 +506,7 @@ function init() {
         });
     });
 
-    // --- A 组织架构详情：Tab 切换（2026 当前 ⇄ 2030 未来）---
-    // 使用事件委托绑在 document 上，避免 DOMContentLoaded 时机问题
-    function switchOrgTab(target) {
-        if (!target) return;
-        const orgTabs = document.querySelectorAll('.org-tab');
-        const orgViews = document.querySelectorAll('.org-view[data-view]');
-        orgTabs.forEach(t => {
-            const isActive = t.getAttribute('data-tab') === target;
-            t.classList.toggle('active', isActive);
-            t.setAttribute('aria-selected', isActive ? 'true' : 'false');
-        });
-        orgViews.forEach(view => {
-            const isMatch = view.getAttribute('data-view') === target;
-            view.hidden = !isMatch;
-        });
-        // 重新触发 fade-in 动画
-        const matched = document.querySelector(`.org-view[data-view="${target}"]`);
-        if (matched) {
-            matched.style.animation = 'none';
-            // force reflow
-            // eslint-disable-next-line no-unused-expressions
-            matched.offsetHeight;
-            matched.style.animation = '';
-        }
-    }
-    document.addEventListener('click', (e) => {
-        const btn = e.target.closest('.org-tab');
-        if (!btn) return;
-        const target = btn.getAttribute('data-tab');
-        if (target) {
-            e.preventDefault();
-            switchOrgTab(target);
-        }
-    });
+    // --- A 组织架构详情：Tab 切换已抽到独立页 js/org-chart.js ---
 
     // --- Persona 卡片 → 高亮对应看板 ---
     const personaCards = document.querySelectorAll('.persona-card');
